@@ -9,7 +9,7 @@ public class Event {
 		private String id;
 		private List<Image> images;
 		private DateParent dates;
-		private List<Link> _links;
+		private Link _links;
 		private Embedded2 _embedded;
 		public String getName() {
 			return name;
