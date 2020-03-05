@@ -11,6 +11,9 @@ public class Event {
 		private DateParent dates;
 		private Link _links;
 		private Embedded2 _embedded;
+		private Classification classifications;
+		
+		
 		public String getName() {
 			return name;
 		}
@@ -54,11 +57,7 @@ public class Event {
 		public void set_embedded(Embedded2 _embedded) {
 			this._embedded = _embedded;
 		}
-		@Override
-		public String toString() {
-			return "Event [name=" + name + ", type=" + type + ", id=" + id + ", images=" + images + ", dates=" + dates
-					+ ", _links=" + _links + ", _embedded=" + _embedded + "]";
-		}
+
 //		@Override
 //		public String toString() {
 //			return "Event [name=" + name + ", type=" + type + ", id=" + id + "]";
@@ -68,6 +67,18 @@ public class Event {
 //			return "Event [name=" + name + ", type=" + type + ", id=" + id + ", images=" + images + ", dates=" + dates
 //					+ ", _embedded=" + _embedded + "]";
 //		}
+		public Classification getClassifications() {
+			return classifications;
+		}
+		public void setClassifications(Classification classifications) {
+			this.classifications = classifications;
+		}
+		@Override
+		public String toString() {
+			return "Event [name=" + name + ", type=" + type + ", id=" + id + ", images=" + images + ", dates=" + dates
+					+ ", _links=" + _links + ", _embedded=" + _embedded + ", classifications=" + classifications + "]";
+		}
 
+		
 		
 }

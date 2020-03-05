@@ -5,6 +5,7 @@ import java.util.List;
 public class Embedded2 {
 	
 	private List<Attraction> attractions;
+	private List<Venue> venues;
 
 	public List<Attraction> getAttractions() {
 		return attractions;
@@ -14,9 +15,19 @@ public class Embedded2 {
 		this.attractions = attractions;
 	}
 
+
+
+	public List<Venue> getVenues() {
+		return venues;
+	}
+
+	public void setVenues(List<Venue> venues) {
+		this.venues = venues;
+	}
+
 	@Override
 	public String toString() {
-		return "Embedded2 [attractions=" + attractions + "]";
+		return "Embedded2 [attractions=" + attractions + ", venues=" + venues + "]";
 	}
 	
 	
