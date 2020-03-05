@@ -58,15 +58,6 @@ public class Event {
 			this._embedded = _embedded;
 		}
 
-//		@Override
-//		public String toString() {
-//			return "Event [name=" + name + ", type=" + type + ", id=" + id + "]";
-//		}
-//		@Override
-//		public String toString() {
-//			return "Event [name=" + name + ", type=" + type + ", id=" + id + ", images=" + images + ", dates=" + dates
-//					+ ", _embedded=" + _embedded + "]";
-//		}
 		public Classification getClassifications() {
 			return classifications;
 		}
@@ -82,3 +73,4 @@ public class Event {
 		
 		
 }
+
