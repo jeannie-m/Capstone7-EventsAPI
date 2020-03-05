@@ -28,6 +28,7 @@ public class EventsController {
 	public ModelAndView search() {
 		
 		Embedded1 embedded = new Embedded1();
+		embedded = apiServ.getEvent();
 		List<String> names = new ArrayList<>();
 		List<Event> events = embedded.getEvents();
 		
