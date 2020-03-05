@@ -1,5 +1,6 @@
 package co.grandcircus.EventsAPI;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -8,7 +9,10 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class ApiService {
-
+	
+	@Value("${TM-api")
+	private String apiKey;
+	
 	private RestTemplate rt;
 
 	{
