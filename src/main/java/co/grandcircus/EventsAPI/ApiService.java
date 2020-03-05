@@ -13,7 +13,7 @@ import co.grandcircus.EventsAPI.Model.TMResponse;
 @Component
 public class ApiService {
 
-	@Value("${TM-api")
+	@Value("${TM-api}")
 	private String apiKey;
 
 	private RestTemplate rt;
@@ -26,18 +26,14 @@ public class ApiService {
 		rt = new RestTemplateBuilder().additionalInterceptors(interceptor).build();
 	}
 
-	public Embedded1 getEvent() {
+	public Embedded1 getEvent(String zipCode) {
 
-		String url = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=tRJz11yleZhHxrcDsW5h4UrvpvuoMzsy";
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode + "&radius=75&unit=miles&apikey=tRJz11yleZhHxrcDsW5h4UrvpvuoMzsy";
 
 		TMResponse response = rt.getForObject(url, TMResponse.class);
-
-		System.out.println(response);
-
+	
 		Embedded1 events = response.get_embedded();
-
-		System.out.println(events);
-
+		
 		return events;
 	}
 }

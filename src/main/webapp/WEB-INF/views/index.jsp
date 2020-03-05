@@ -8,14 +8,33 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="/style.css">
+<!-- Favicon It's a coffee cup right now. Change it to whatever you want--><link rel="icon" 
+   type="image/png" 
+   href="https://i2.wp.com/awakedetroit.com/wp-content/uploads/2019/04/cropped-Favicon.png?ssl=1">
+<!-- Bootstrap core CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<!-- Bootswatch Theme Flatly. Grab a different one from https://www.bootstrapcdn.com/bootswatch/ if you want-->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF"
+	crossorigin="anonymous"><link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
 <h1>Welcome to the Events App</h1>
 
-<a href="/search">search</a>
+<h2>${message}</h2>
+
+<form class="container" action="/search">
+
+<p>Area Code: <input type="text" name="zipCode" required pattern="[.\d]{5}"></p>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+
 
 </body>
 </html>
