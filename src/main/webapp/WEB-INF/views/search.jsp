@@ -13,9 +13,20 @@
 </head>
 <body>
 
-<h1>Welcome to the Events App</h1>
+<table>
+  <tr>
+    <th>name</th>
+   </tr>
+   
+   <c:forEach var="name" items="names">
+  <tr>
+  
+    <td>${name}</td>
+    
+   </c:forEach>
+  </tr>
+</table>
 
-<a href="/search">search</a>
 
 </body>
 </html>
