@@ -5,6 +5,8 @@ public class Venue {
 		private String name;
 		private String PostalCode;
 		private Location location;
+		private City city;
+		
 		
 		public String getName() {
 			return name;
@@ -24,9 +26,17 @@ public class Venue {
 		public void setLocation(Location location) {
 			this.location = location;
 		}
+
 		@Override
 		public String toString() {
-			return "Venue [name=" + name + ", PostalCode=" + PostalCode + ", location=" + location + "]";
+			return "Venue [name=" + name + ", PostalCode=" + PostalCode + ", location=" + location + ", city=" + city
+					+ "]";
+		}
+		public City getCity() {
+			return city;
+		}
+		public void setCity(City city) {
+			this.city = city;
 		}
 		
 		

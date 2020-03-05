@@ -4,6 +4,7 @@ public class Attraction {
 	private String name;
 	private String type;
 	private String id;
+	
 	public String getName() {
 		return name;
 	}

@@ -11,7 +11,7 @@ public class Event {
 		private DateParent dates;
 		private Link _links;
 		private Embedded2 _embedded;
-		private Classification classifications;
+		private List<Classification> classifications;
 		
 		
 		public String getName() {
@@ -58,10 +58,10 @@ public class Event {
 			this._embedded = _embedded;
 		}
 
-		public Classification getClassifications() {
+		public List<Classification> getClassifications() {
 			return classifications;
 		}
-		public void setClassifications(Classification classifications) {
+		public void setClassifications(List<Classification> classifications) {
 			this.classifications = classifications;
 		}
 		@Override
