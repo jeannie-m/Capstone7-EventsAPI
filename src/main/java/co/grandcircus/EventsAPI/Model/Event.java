@@ -41,10 +41,11 @@ public class Event {
 		public void setDates(DateParent dates) {
 			this.dates = dates;
 		}
-		public List<Link> get_links() {
+		
+		public Link get_links() {
 			return _links;
 		}
-		public void set_links(List<Link> _links) {
+		public void set_links(Link _links) {
 			this._links = _links;
 		}
 		public Embedded2 get_embedded() {
@@ -58,6 +59,15 @@ public class Event {
 			return "Event [name=" + name + ", type=" + type + ", id=" + id + ", images=" + images + ", dates=" + dates
 					+ ", _links=" + _links + ", _embedded=" + _embedded + "]";
 		}
+//		@Override
+//		public String toString() {
+//			return "Event [name=" + name + ", type=" + type + ", id=" + id + "]";
+//		}
+//		@Override
+//		public String toString() {
+//			return "Event [name=" + name + ", type=" + type + ", id=" + id + ", images=" + images + ", dates=" + dates
+//					+ ", _embedded=" + _embedded + "]";
+//		}
 
 		
 }
