@@ -27,7 +27,7 @@
 	crossorigin="anonymous">
 <!-- Your custom styles -->
 <link rel="stylesheet" href="css/style.css">
-
+<script type="text/javascript" src="/javascript.js"></script>
 <title>Event Details</title>
 </head>
 <body>
@@ -89,14 +89,83 @@
 	icon optional
 A machine-readable text summary of this data point, suitable for selecting an icon for display. If defined, this property will have one of the following values: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined, as additional values, such as hail, thunderstorm, or tornado, may be defined in the future.)  -->
 
+
+	<figure>
+		<div class="box">
+			<canvas id="icon1" width="128" height="128"></canvas>
+		</div>
+		<div class="box">
+			<canvas id="icon2" width="128" height="128"></canvas>
+		</div>
+				<div class="box">
+			<canvas id="icon3" width="128" height="128"></canvas>
+		</div>
+		<div class="box">
+			<canvas id="icon4" width="128" height="128"></canvas>
+		</div>
+				<div class="box">
+			<canvas id="icon6" width="128" height="128"></canvas>
+		</div>
+		<div class="box">
+			<canvas id="icon7" width="128" height="128"></canvas>
+		</div>
+				<div class="box">
+			<canvas id="icon8" width="128" height="128"></canvas>
+		</div>
+		<div class="box">
+			<canvas id="icon9" width="128" height="128"></canvas>
+		</div>
+	</figure>
+
 	<script>
 		var skycons = new Skycons({
-			"color" : "pink"
+			"monochrome" : false,
+			"color" : {
+				"main" : "black",
+				"moon" : "gold", 
+				"fog" : "gray",
+				"fogbank" : "light gray",
+				"light_cloud": "gray",
+				"cloud" : "gold", 
+				"dark_cloud" : "dark gray",
+				"thunder" : "dark gray",
+				"snow": "light blue",
+				"hail" : "gray",
+				"sleet" : "dark gray",
+				"wind": "lime green",
+				"leaf" : "green",
+				"rain" : "blue",
+				"sun": "yellow",
+				"thunderbolts" : "yellow"
+			}
 		});
+		//main, moon, fog, fogbank, light_cloud, cloud, dark_cloud,
+  // thunder, snow, hail, sleet, wind, leaf, rain, su
 		// on Android, a nasty hack is needed: {"resizeClear": true}
 
 		// you can add a canvas by it's ID...
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+/* 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY); */
+		
 
 		// ...or by the canvas DOM element itself.
 		skycons.add(document.getElementById("icon2"), Skycons.RAIN);
@@ -109,16 +178,6 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 		// you can also halt animation with skycons.pause()
 	</script>
-	<figure>
-		<div class="box">
-			<canvas id="icon1" width="128" height="128"></canvas>
-		</div>
-		<div class="box">
-			<canvas id="icon2" width="128" height="128"></canvas>
-		</div>
-	</figure>
-
-
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -135,6 +194,6 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		crossorigin="anonymous"></script>
 	<script
 		src=" https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
-	<script src="/javascript.js"></script>
+
 </body>
 </html>
