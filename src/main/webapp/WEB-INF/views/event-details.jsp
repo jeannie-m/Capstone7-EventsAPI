@@ -60,7 +60,7 @@
 						<!-- Text -->
 						<p class="card-text">Date: ${ date }</p>
 						<p class="card-text">Genre: ${ genre.name }</p>
-						<p class="card-text">Featuring: ${ attraction.name }</p>
+						<p class="card-text">Featuring: ${ attractions[0].name }</p>
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
@@ -68,11 +68,25 @@
 							<a href="${ link }" class="btn btn-primary"> View on
 								TicketMaster</a>
 						</div>
+						
+						<form method="post" action="/search">
+						 
 						<div>
-							<a href="/search" class="btn btn-primary"> Back to Search</a>
+							<button type="submit" class="btn btn-primary"> Back to Search</button>
 						</div>
+						
+						</form>
 						<div>
-							<button type="submit"> Mark as Favorite</a>
+						
+						<form method="post" action="/event-details/${fave}/${event.id}">
+						<c:if test="${fave}">
+						<button type="submit" name="fave" value="true">Unfavorite</button>
+						</c:if>
+						<c:if test="${!fave}">
+						<button type="submit" name="fave" value="false">Favorite</button>
+						</c:if>
+						</form>
+						
 						</div>
 					</div>
 				</div>

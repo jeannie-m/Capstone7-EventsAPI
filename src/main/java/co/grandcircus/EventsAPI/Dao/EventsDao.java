@@ -5,5 +5,7 @@ import co.grandcircus.EventsAPI.Entities.FavEvent;
 
 
 public interface EventsDao extends JpaRepository<FavEvent, Long>{
+	
+	FavEvent findByEventId(String id);
 
 }
