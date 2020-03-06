@@ -21,6 +21,7 @@ public class FavEvent {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	private String name;
 	private String eventId;
 	private String image;
 	private String date;
@@ -119,6 +120,14 @@ public class FavEvent {
 
 	public void setFave(Boolean fave) {
 		this.fave = fave;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 
