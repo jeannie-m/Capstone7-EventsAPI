@@ -58,4 +58,38 @@ public class ApiService {
 		
 		return events;
 	} 
+	
+	public Embedded1 byDate(String date, String zipCode) {
+
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode +"&radius=75&unit=miles&locale=*&startDateTime=" + date + "T00:00:00Z";
+
+		TMResponse response = rt.getForObject(url, TMResponse.class);
+	
+		Embedded1 events = response.get_embedded();
+		
+		return events;
+	} 
+	public Embedded1 byEndDate(String date, String zipCode) {
+
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode +"&radius=75&unit=miles&locale=*&endDateTime=" + date + "T00:00:00Z";
+
+		TMResponse response = rt.getForObject(url, TMResponse.class);
+	
+		Embedded1 events = response.get_embedded();
+		
+		return events;
+	} 
+	public Embedded1 byDates(String date, String endDate, String zipCode) {
+
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode +"&radius=75&unit=miles&locale=*&startDateTime=" + date 
+				+ "T00:00:00Z&endDateTime="+endDate+"T00:00:00Z";
+
+		TMResponse response = rt.getForObject(url, TMResponse.class);
+	
+		Embedded1 events = response.get_embedded();
+		
+		return events;
+	} 
 }
+	
+	

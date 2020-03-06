@@ -1,23 +1,14 @@
 package co.grandcircus.EventsAPI.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.EventsAPI.ApiService;
 import co.grandcircus.EventsAPI.ApiService2;
-import co.grandcircus.EventsAPI.Model.Classification;
-import co.grandcircus.EventsAPI.Model.DateParent;
-import co.grandcircus.EventsAPI.Model.Embedded1;
-import co.grandcircus.EventsAPI.Model.Embedded2;
 import co.grandcircus.EventsAPI.Model.Event;
-import co.grandcircus.EventsAPI.Model.Image;
-import co.grandcircus.EventsAPI.Model.Link;
 import co.grandcircus.EventsAPI.Model.DarkSky.Currently;
 
 
@@ -51,8 +42,8 @@ public class EventsController2 {
 //	}
 	
 	
-	@RequestMapping("/event-details")
-	public ModelAndView eventDetails(@RequestParam("eventId") String id) {
+	@RequestMapping("/event-details/{id}")
+	public ModelAndView eventDetails(@PathVariable("id") String id) {
 		ModelAndView mav = new ModelAndView("event-details");
 		//First get event and event details
 		Event event = apiServ2.getEventById(id);

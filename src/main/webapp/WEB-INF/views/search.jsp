@@ -30,15 +30,30 @@
 	<nav class="navbar navbar-expand-lg">
 
 		<form method="post" action="/search" class="form-inline ml-auto">
-			<input type="hidden" name="zipCode" value="${zipCode}">
-			<input class="form-control mr-sm-2" name="keyword" type="search"
+			<input type="hidden" name="zipCode" value="${zipCode}"> <input
+				class="form-control mr-sm-2" name="keyword" type="search"
 				placeholder="Keyword">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
 				by Keyword</button>
 		</form>
 
+		<form method="post" action="/search" class="form-inline ml-auto">
+
+			<p>
+				Start Date<input class="form-inline mr-sm-2" type="date" name="date" />
+			</p>
+			<p>
+				End Date<input class="form-inline mr-sm-2" type="date" name="endDate" />
+			</p>
+			<input type="hidden" name="zipCode" value="${zipCode}">
+
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+				By Date</button>
+
+		</form>
+
 		<form method="post" class="form-inline ml-auto" action="/search">
-		<input type="hidden" name="zipCode" value="${zipCode}">
+			<input class="form-inline mr-sm-2" type="hidden" name="zipCode" value="${zipCode}">
 			Venue: <select name="venue">
 				<c:forEach var="event" items="${events}">
 					<c:forEach var="local" items="${event._embedded.venues}">
@@ -64,10 +79,16 @@
 
 				<td>${event.name}</td>
 				<td>${event.dates.start.localDate}</td>
-				<c:forEach var="local" items="${event._embedded.venues}">
-					<td>${local.name}</td>
-				</c:forEach>
-				<td><a href="/event-details" + ${event.id}>Details</a></td>
+
+				<form method="post" action="/search">
+					<input type="hidden" name="zipCode" value="${zipCode}">
+					<c:forEach var="local" items="${event._embedded.venues}">
+						<td><button class="btn btn-secondary" value="${local.id}"
+								name="venue">${local.name}</button></td>
+					</c:forEach>
+				</form>
+				<td><a href="/event-details/${event.id}"
+					class="btn btn-secondary">Details</a></td>
 			</tr>
 		</c:forEach>
 
