@@ -1,8 +1,6 @@
 package co.grandcircus.EventsAPI.Dao;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import co.grandcircus.EventsAPI.Model.FavEvent;
+import co.grandcircus.EventsAPI.Entities.FavEvent;
 
 
 

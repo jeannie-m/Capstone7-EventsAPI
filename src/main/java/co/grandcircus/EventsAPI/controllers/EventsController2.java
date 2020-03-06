@@ -25,30 +25,7 @@ import co.grandcircus.EventsAPI.Model.DarkSky.Currently;
 public class EventsController2 {
 	
 	@Autowired
-	private ApiService apiServ;
-	@Autowired
 	private ApiService2 apiServ2;
-	
-//	@RequestMapping("/")
-//	public ModelAndView index() {
-//		return new ModelAndView("index");
-//	}
-//	
-//	@RequestMapping("/search")
-//	public ModelAndView search() {
-//		
-//		Embedded1 embedded = new Embedded1();
-//		embedded = apiServ.getEvent();
-//		List<String> names = new ArrayList<>();
-//		List<Event> events = embedded.getEvents();
-//		
-//		for (Event event : events) {
-//			
-//			names.add(event.getName());
-//		}
-//				
-//		return new ModelAndView("search", "names", names);
-//	}
 	
 	
 	@RequestMapping("/event-details")

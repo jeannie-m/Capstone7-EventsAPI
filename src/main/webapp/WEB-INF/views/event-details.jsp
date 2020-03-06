@@ -60,19 +60,25 @@
 						<!-- Text -->
 						<p class="card-text">Date: ${ date }</p>
 						<p class="card-text">Genre: ${ genre.name }</p>
+						<p class="card-text">Featuring: ${ attraction.name }</p>
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
-						<a href="${ link }" class="btn btn-primary"> View on
-							TicketMaster</a>
+						<div>
+							<a href="${ link }" class="btn btn-primary"> View on
+								TicketMaster</a>
+						</div>
+						<div>
+							<a href="/search" class="btn btn-primary"> Back to Search</a>
+						</div>
+						<div>
+							<button type="submit"> Mark as Favorite</a>
+						</div>
 					</div>
 				</div>
-				<!-- Card -->
-
 			</div>
 		</div>
-		<br>
-
+		<!-- Card -->
 
 	</div>
 

@@ -1,10 +1,26 @@
 package co.grandcircus.EventsAPI.Model.DarkSky;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import co.grandcircus.EventsAPI.Entities.FavEvent;
+
+@Entity
 public class Currently {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id; 	
 	private String summary;
 	private String icon;
 	private Double temperature;
+	
+	@OneToOne(mappedBy = "weather")
+	private FavEvent favEvent;
+	
 	
 	
 	public String getSummary() {
