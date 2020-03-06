@@ -19,7 +19,7 @@ import co.grandcircus.EventsAPI.Model.Event;
 
 @Controller
 public class EventsController {
-	
+
 	@Autowired
 	private HttpSession sesh;
 
@@ -34,16 +34,15 @@ public class EventsController {
 
 		}
 
-		return new ModelAndView("index", "message", message);
+		return new ModelAndView("index", "message" , message);
 	}
 
 	@RequestMapping("/search")
-	public ModelAndView search(ZipCode zipCode) {
+	public ModelAndView search(@RequestParam("zipCode") String zipCode) {
 
 		Embedded1 embedded = new Embedded1();
-		
-		
-		embedded = apiServ.getEvent(zipCode.getZipCode());
+		embedded = apiServ.getEvent(zipCode);
+
 
 		if (embedded == null) {
 
@@ -51,22 +50,23 @@ public class EventsController {
 		}
 
 		List<Event> events = embedded.getEvents();
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("events", events);
+
 		
 		sesh.setAttribute("zipCode", zipCode);
 
-		return mav;
+
+		return new ModelAndView("search", "events", events);
+
 	}
 
 	@PostMapping("/search")
 	public ModelAndView search(@RequestParam(name = "venue", required = false) String venue,
-			@RequestParam(name = "keyword", required = false) String keyword, @SessionAttribute("zipCode") ZipCode zipCode2,
+			@RequestParam(name = "keyword", required = false) String keyword, @SessionAttribute("zipCode") String zipCode,
 			@RequestParam(name = "date", required = false) String startDate,
 			@RequestParam(name = "endDate", required = false) String endDate) {
 
 		Embedded1 embedded = new Embedded1();
-		String zipCode = zipCode2.getZipCode();
+//		String zipCode = zipCode2.getZipCode();
 		
 		if (keyword != null && !keyword.isEmpty()) {
 

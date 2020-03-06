@@ -13,6 +13,7 @@ public class Event {
 		private Embedded2 _embedded;
 		private List<Classification> classifications;
 		private Boolean fave = false;
+
 		
 		
 		public String getName() {
@@ -58,6 +59,7 @@ public class Event {
 		public void set_embedded(Embedded2 _embedded) {
 			this._embedded = _embedded;
 		}
+
 
 		public List<Classification> getClassifications() {
 			return classifications;
