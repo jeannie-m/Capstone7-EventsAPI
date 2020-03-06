@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +28,7 @@ public class EventsController {
 
 		}
 
-		return new ModelAndView("index", "message" , message);
+		return new ModelAndView("index", "message", message);
 	}
 
 	@RequestMapping("/search")
@@ -42,8 +43,38 @@ public class EventsController {
 		}
 
 		List<Event> events = embedded.getEvents();
+		System.out.println(events.size());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("events", events);
+		mav.addObject("zipCode", zipCode);
+		
 
-		return new ModelAndView("search", "events", events);
+		return mav;
+	}
+
+	@PostMapping("/search")
+	public ModelAndView search(@RequestParam(name = "venue", required = false) String venue,
+			@RequestParam(name = "keyword", required = false) String keyword, 
+			@RequestParam("zipCode") String zipCode) {
+		
+		Embedded1 embedded = new Embedded1();
+		
+		if (keyword != null && !keyword.isEmpty()) {
+			
+			embedded = apiServ.byKeyword(keyword, zipCode);
+			List<Event> events = embedded.getEvents();
+			
+			return new ModelAndView("search", "events", events);
+		} else if (venue != null && !venue.isEmpty()) {
+			
+			embedded = apiServ.byVenue(venue, zipCode);
+			List<Event> events = embedded.getEvents();
+			
+			return new ModelAndView("search", "events", events);
+		} else
+		
+		return new ModelAndView("search");
 	}
 
 }

@@ -28,7 +28,7 @@ public class ApiService {
 
 	public Embedded1 getEvent(String zipCode) {
 
-		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode + "&radius=75&unit=miles&apikey=tRJz11yleZhHxrcDsW5h4UrvpvuoMzsy";
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode + "&radius=75&unit=miles&size=400";
 
 		TMResponse response = rt.getForObject(url, TMResponse.class);
 	
@@ -36,4 +36,26 @@ public class ApiService {
 		
 		return events;
 	}
+	
+	public Embedded1 byVenue(String venue, String zipCode) {
+
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&venueId="+venue+"&postalCode="+zipCode+"&radius=75&unit=miles&locale=*&size=100";
+
+		TMResponse response = rt.getForObject(url, TMResponse.class);
+	
+		Embedded1 events = response.get_embedded();
+		
+		return events;
+	} 
+	
+	public Embedded1 byKeyword(String keyword, String zipCode) {
+
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&keyword="+keyword+"&postalCode="+zipCode+"&radius=75&unit=miles&size=100";
+
+		TMResponse response = rt.getForObject(url, TMResponse.class);
+	
+		Embedded1 events = response.get_embedded();
+		
+		return events;
+	} 
 }
