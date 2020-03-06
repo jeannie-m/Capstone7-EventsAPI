@@ -43,38 +43,55 @@ public class EventsController {
 		}
 
 		List<Event> events = embedded.getEvents();
-		System.out.println(events.size());
-		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("events", events);
 		mav.addObject("zipCode", zipCode);
-		
 
 		return mav;
 	}
 
 	@PostMapping("/search")
 	public ModelAndView search(@RequestParam(name = "venue", required = false) String venue,
-			@RequestParam(name = "keyword", required = false) String keyword, 
-			@RequestParam("zipCode") String zipCode) {
-		
+			@RequestParam(name = "keyword", required = false) String keyword, @RequestParam("zipCode") String zipCode,
+			@RequestParam(name = "date", required = false) String startDate,
+			@RequestParam(name = "endDate", required = false) String endDate) {
+
 		Embedded1 embedded = new Embedded1();
 		
 		if (keyword != null && !keyword.isEmpty()) {
-			
+
 			embedded = apiServ.byKeyword(keyword, zipCode);
 			List<Event> events = embedded.getEvents();
-			
+
 			return new ModelAndView("search", "events", events);
 		} else if (venue != null && !venue.isEmpty()) {
-			
+
 			embedded = apiServ.byVenue(venue, zipCode);
 			List<Event> events = embedded.getEvents();
-			
-			return new ModelAndView("search", "events", events);
-		} else
-		
-		return new ModelAndView("search");
-	}
 
+			return new ModelAndView("search", "events", events);
+		} else if ((startDate != null && !startDate.isEmpty()) && (endDate == null || endDate.isEmpty())) {
+
+			embedded = apiServ.byDate(startDate, zipCode);
+			List<Event> events = embedded.getEvents();
+
+			return new ModelAndView("search", "events", events);
+		} else if ((endDate != null && !endDate.isEmpty()) && (startDate == null || startDate.isEmpty())) {
+
+			embedded = apiServ.byEndDate(endDate, zipCode);
+			List<Event> events = embedded.getEvents();
+
+			return new ModelAndView("search", "events", events);
+		} else if ((endDate != null && !endDate.isEmpty()) && (startDate != null && !startDate.isEmpty())) {
+
+			embedded = apiServ.byDates(startDate, endDate, zipCode);
+			List<Event> events = embedded.getEvents();
+
+			return new ModelAndView("search", "events", events);
+		} else {
+
+			return new ModelAndView("search");
+		}
+
+	}
 }
