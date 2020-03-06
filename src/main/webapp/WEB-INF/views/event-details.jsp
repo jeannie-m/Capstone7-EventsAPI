@@ -60,7 +60,7 @@
 						<!-- Text -->
 						<p class="card-text">Date: ${ date }</p>
 						<p class="card-text">Genre: ${ genre.name }</p>
-						<p class="card-text">Featuring: ${ attraction.name }</p>
+						<p class="card-text">Featuring: ${ attractions[0].name }</p> 
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
