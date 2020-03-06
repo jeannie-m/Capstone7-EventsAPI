@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.EventsAPI.ApiService;
+
+import co.grandcircus.EventsAPI.Dao.EventsDao;
+import co.grandcircus.EventsAPI.Entities.FavEvent;
+
 import co.grandcircus.EventsAPI.Entities.ZipCode;
+
 import co.grandcircus.EventsAPI.Model.Embedded1;
 import co.grandcircus.EventsAPI.Model.Event;
 
@@ -25,7 +30,10 @@ public class EventsController {
 
 	@Autowired
 	private ApiService apiServ;
-
+	
+	@Autowired 
+	private EventsDao eDao;
+	
 	@RequestMapping("/")
 	public ModelAndView index(@RequestParam(name = "message", required = false) String message) {
 
@@ -103,5 +111,14 @@ public class EventsController {
 			return new ModelAndView("search");
 		}
 
+	}
+	
+	@RequestMapping("/bucket-list")
+	public ModelAndView seeBucketList() {
+		
+		ModelAndView mav = new ModelAndView("bucket-list");
+		List<FavEvent> bucketList = eDao.findAll();
+		mav.addObject("bucketList", bucketList);
+		return mav;
 	}
 }

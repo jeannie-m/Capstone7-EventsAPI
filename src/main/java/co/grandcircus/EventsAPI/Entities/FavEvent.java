@@ -21,12 +21,14 @@ public class FavEvent {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	private String name;
 	private String eventId;
 	private String image;
 	private String date;
 	private String link;
 	private String segment;
 	private String genre;
+	private Boolean fave;
 	
 	@OneToOne
 	private Currently weather;
@@ -110,6 +112,22 @@ public class FavEvent {
 
 	public void setAttractions(List<Attraction> attractions) {
 		this.attractions = attractions;
+	}
+
+	public Boolean getFave() {
+		return fave;
+	}
+
+	public void setFave(Boolean fave) {
+		this.fave = fave;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 

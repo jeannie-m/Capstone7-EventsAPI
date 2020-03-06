@@ -8,4 +8,6 @@ public interface EventsDao extends JpaRepository<FavEvent, Long>{
 	
 	FavEvent findByEventId(String id);
 
+	
+	
 }
