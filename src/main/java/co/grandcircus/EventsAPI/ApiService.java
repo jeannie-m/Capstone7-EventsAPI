@@ -1,5 +1,8 @@
 package co.grandcircus.EventsAPI;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -7,6 +10,7 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import co.grandcircus.EventsAPI.Entities.ZipCode;
 import co.grandcircus.EventsAPI.Model.Embedded1;
 import co.grandcircus.EventsAPI.Model.TMResponse;
 
@@ -17,6 +21,8 @@ public class ApiService {
 	private String apiKey;
 
 	private RestTemplate rt;
+	
+
 
 	{
 		ClientHttpRequestInterceptor interceptor = (request, body, execution) -> {
@@ -28,12 +34,13 @@ public class ApiService {
 
 	public Embedded1 getEvent(String zipCode) {
 
+
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode=" + zipCode + "&radius=75&unit=miles&size=400";
 
 		TMResponse response = rt.getForObject(url, TMResponse.class);
 	
 		Embedded1 events = response.get_embedded();
-		
+	
 		return events;
 	}
 	
@@ -55,7 +62,6 @@ public class ApiService {
 		TMResponse response = rt.getForObject(url, TMResponse.class);
 	
 		Embedded1 events = response.get_embedded();
-		
 		return events;
 	} 
 	

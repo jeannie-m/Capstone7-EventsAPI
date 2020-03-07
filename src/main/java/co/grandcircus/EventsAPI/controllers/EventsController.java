@@ -2,21 +2,31 @@ package co.grandcircus.EventsAPI.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.EventsAPI.ApiService;
+
 import co.grandcircus.EventsAPI.Dao.EventsDao;
 import co.grandcircus.EventsAPI.Entities.FavEvent;
+
+import co.grandcircus.EventsAPI.Entities.ZipCode;
+
 import co.grandcircus.EventsAPI.Model.Embedded1;
 import co.grandcircus.EventsAPI.Model.Event;
 
 @Controller
 public class EventsController {
+
+	@Autowired
+	private HttpSession sesh;
 
 	@Autowired
 	private ApiService apiServ;
@@ -32,7 +42,7 @@ public class EventsController {
 
 		}
 
-		return new ModelAndView("index", "message", message);
+		return new ModelAndView("index", "message" , message);
 	}
 
 	@RequestMapping("/search")
@@ -41,26 +51,30 @@ public class EventsController {
 		Embedded1 embedded = new Embedded1();
 		embedded = apiServ.getEvent(zipCode);
 
+
 		if (embedded == null) {
 
 			return new ModelAndView("redirect:/", "message", "That zip code did not return any events.");
 		}
 
 		List<Event> events = embedded.getEvents();
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("events", events);
-		mav.addObject("zipCode", zipCode);
 
-		return mav;
+		
+		sesh.setAttribute("zipCode", zipCode);
+
+
+		return new ModelAndView("search", "events", events);
+
 	}
 
 	@PostMapping("/search")
 	public ModelAndView search(@RequestParam(name = "venue", required = false) String venue,
-			@RequestParam(name = "keyword", required = false) String keyword, @RequestParam("zipCode") String zipCode,
+			@RequestParam(name = "keyword", required = false) String keyword, @SessionAttribute("zipCode") String zipCode,
 			@RequestParam(name = "date", required = false) String startDate,
 			@RequestParam(name = "endDate", required = false) String endDate) {
 
 		Embedded1 embedded = new Embedded1();
+//		String zipCode = zipCode2.getZipCode();
 		
 		if (keyword != null && !keyword.isEmpty()) {
 

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Insert title here</title> 
 <!-- Favicon It's a coffee cup right now. Change it to whatever you want-->
 <link rel="icon" type="image/png"
 	href="https://i2.wp.com/awakedetroit.com/wp-content/uploads/2019/04/cropped-Favicon.png?ssl=1">
@@ -43,7 +43,8 @@
 				Start Date<input class="form-inline mr-sm-2" type="date" name="date" />
 			</p>
 			<p>
-				End Date<input class="form-inline mr-sm-2" type="date" name="endDate" />
+				End Date<input class="form-inline mr-sm-2" type="date"
+					name="endDate" />
 			</p>
 			<input type="hidden" name="zipCode" value="${zipCode}">
 
@@ -53,8 +54,8 @@
 		</form>
 
 		<form method="post" class="form-inline ml-auto" action="/search">
-			<input class="form-inline mr-sm-2" type="hidden" name="zipCode" value="${zipCode}">
-			Venue: <select name="venue">
+			<input class="form-inline mr-sm-2" type="hidden" name="zipCode"
+				value="${zipCode}"> Venue: <select name="venue">
 				<c:forEach var="event" items="${events}">
 					<c:forEach var="local" items="${event._embedded.venues}">
 						<option value="${local.id}">${local.name}</option>
@@ -80,6 +81,7 @@
 				<td>${event.name}</td>
 				<td>${event.dates.start.localDate}</td>
 
+
 				<form method="post" action="/search">
 					<input type="hidden" name="zipCode" value="${zipCode}">
 					<c:forEach var="local" items="${event._embedded.venues}">
@@ -89,6 +91,8 @@
 				</form>
 				<td><a href="/event-details/${event.id}"
 					class="btn btn-secondary">Details</a></td>
+
+
 			</tr>
 		</c:forEach>
 

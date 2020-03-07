@@ -12,6 +12,8 @@ public class Event {
 		private Link _links;
 		private Embedded2 _embedded;
 		private List<Classification> classifications;
+		private Boolean fave = false;
+
 		
 		
 		public String getName() {
@@ -58,11 +60,18 @@ public class Event {
 			this._embedded = _embedded;
 		}
 
+
 		public List<Classification> getClassifications() {
 			return classifications;
 		}
 		public void setClassifications(List<Classification> classifications) {
 			this.classifications = classifications;
+		}
+		public Boolean getFave() {
+			return fave;
+		}
+		public void setFave(Boolean fave) {
+			this.fave = fave;
 		}
 		@Override
 		public String toString() {
