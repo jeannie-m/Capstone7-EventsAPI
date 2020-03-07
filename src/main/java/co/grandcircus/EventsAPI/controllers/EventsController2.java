@@ -47,7 +47,7 @@ public class EventsController2 {
 		// images are all the same so just grabbing first one
 		mav.addObject("image", event.getImages().get(0));
 		mav.addObject("date", event.getDates().getStart().getLocalDate());
-		mav.addObject("link", event.get_links().getSelf().getHref());
+		mav.addObject("link", event.getUrl());
 		mav.addObject("attractions", event.get_embedded().getAttractions());
 		mav.addObject("segment", event.getClassifications().get(0).getSegment());
 		mav.addObject("genre", event.getClassifications().get(0).getGenre());

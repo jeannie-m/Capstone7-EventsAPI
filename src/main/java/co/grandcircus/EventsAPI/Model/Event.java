@@ -7,6 +7,7 @@ public class Event {
 		private String name;
 		private String type;
 		private String id;
+		private String url;
 		private List<Image> images;
 		private DateParent dates;
 		private Link _links;
@@ -33,6 +34,12 @@ public class Event {
 		}
 		public void setId(String id) {
 			this.id = id;
+		}
+		public String getUrl() {
+			return url;
+		}
+		public void setUrl(String url) {
+			this.url = url;
 		}
 		public List<Image> getImages() {
 			return images;

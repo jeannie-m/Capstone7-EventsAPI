@@ -54,14 +54,7 @@
 		</form>
 
 		<form method="post" class="form-inline ml-auto" action="/search">
-			<input class="form-inline mr-sm-2" type="hidden" name="zipCode"
-				value="${zipCode}"> Venue: <select name="venue">
-				<c:forEach var="event" items="${events}">
-					<c:forEach var="local" items="${event._embedded.venues}">
-						<option value="${local.id}">${local.name}</option>
-					</c:forEach>
-				</c:forEach>
-			</select>
+						<input class="form-control mr-sm-2" name="venuename" type="search" placeholder="Venue">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Choose
 				Venue</button>
 		</form>

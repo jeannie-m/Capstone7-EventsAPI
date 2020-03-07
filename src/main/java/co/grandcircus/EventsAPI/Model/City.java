@@ -14,7 +14,7 @@ public class City {
 
 		@Override
 		public String toString() {
-			return "City [name=" + name + "]";
+			return name;
 		}
 		
 		
