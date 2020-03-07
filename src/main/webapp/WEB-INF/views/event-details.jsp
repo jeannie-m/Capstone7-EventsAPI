@@ -91,33 +91,20 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 
 	<figure>
-		<div class="box">
+	 		<div class="box">
+			<canvas id="icon0" width="128" height="128"></canvas>
+		</div> 
+				<div class="box">
 			<canvas id="icon1" width="128" height="128"></canvas>
 		</div>
-		<div class="box">
+						<div class="box">
 			<canvas id="icon2" width="128" height="128"></canvas>
-		</div>
-				<div class="box">
-			<canvas id="icon3" width="128" height="128"></canvas>
-		</div>
-		<div class="box">
-			<canvas id="icon4" width="128" height="128"></canvas>
-		</div>
-				<div class="box">
-			<canvas id="icon6" width="128" height="128"></canvas>
-		</div>
-		<div class="box">
-			<canvas id="icon7" width="128" height="128"></canvas>
-		</div>
-				<div class="box">
-			<canvas id="icon8" width="128" height="128"></canvas>
-		</div>
-		<div class="box">
-			<canvas id="icon9" width="128" height="128"></canvas>
 		</div>
 	</figure>
 
 	<script>
+	//var icon = "${ icon }";
+		var iconString = <c:out value="${icon}"/>;
 		var skycons = new Skycons({
 			"monochrome" : false,
 			"color" : {
@@ -139,14 +126,14 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 				"thunderbolts" : "yellow"
 			}
 		});
-		//main, moon, fog, fogbank, light_cloud, cloud, dark_cloud,
-  // thunder, snow, hail, sleet, wind, leaf, rain, su
-		// on Android, a nasty hack is needed: {"resizeClear": true}
+
 
 		// you can add a canvas by it's ID...
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-/* 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+ 		skycons.add("icon0", Skycons.icon);
+		sycons.add("icon", Skycons.iconString);
+ 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
+ 		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
+ 		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);

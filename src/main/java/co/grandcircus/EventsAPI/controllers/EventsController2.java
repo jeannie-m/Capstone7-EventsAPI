@@ -40,8 +40,14 @@ public class EventsController2 {
 		String localDate = event.getDates().getStart().getLocalDate();
 		String localTime = event.getDates().getStart().getLocalTime();
 		Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);
+		//transform the icon string to the format needed for icon canvas function
+		String icon = weather.getIcon().toUpperCase().replace('-', '_');
 		mav.addObject("weather", weather);
+		mav.addObject(icon);
+		System.out.println(icon);
+		
 		return mav;
+		
 	}
 
 	
