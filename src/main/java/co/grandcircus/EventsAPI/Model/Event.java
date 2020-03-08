@@ -2,6 +2,7 @@ package co.grandcircus.EventsAPI.Model;
 
 import java.util.List;
 
+
 public class Event {
 
 		private String name;

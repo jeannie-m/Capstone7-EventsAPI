@@ -68,7 +68,7 @@ public class EventsController2 {
 
 		Event event = apiServ2.getEventById(id);
 
-		if (fave == false) {
+		if (fave == false) { //favorites an event and adds it to SQL database if not already favorited
 		
 		FavEvent fEvent = new FavEvent();
 				
@@ -81,7 +81,7 @@ public class EventsController2 {
 	
 
 		eventsDao.save(fEvent);
-		} else if (fave == true) {
+		} else if (fave == true) { //deletes an event from the database if already favorited
 			eventsDao.deleteById((eventsDao.findByEventId(id).getId()));
 		}
 

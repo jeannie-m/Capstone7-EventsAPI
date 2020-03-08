@@ -27,6 +27,7 @@
 </head>
 <body>
 
+<!-- list of venues to choose from, sends the id back for an event search -->
 	<form method="post" action="/search">
 		<table class="table table-striped">
 			<tr>
