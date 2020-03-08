@@ -31,7 +31,7 @@
 <title>Event Details</title>
 </head>
 <body>
-<%@ include file="partials/navbar.jsp"%>
+	<%@ include file="partials/navbar.jsp"%>
 
 	<div class="container">
 		<div class="row v-center-parent">
@@ -61,8 +61,10 @@
 						<p class="card-text">Date: ${ date }</p>
 						<p class="card-text">Genre: ${ genre.name }</p>
 
-						<p class="card-text">Featuring: ${ attractions[0].name }</p> 
-
+						<p class="card-text">Featuring: ${ attractions[0].name }</p>
+						<div class="box">
+							<img src="/img/${ icon }.png" width="128" height="128">
+						</div>
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
@@ -70,25 +72,25 @@
 							<a href="${ link }" class="btn btn-primary"> View on
 								TicketMaster</a>
 						</div>
-						
+
 						<form method="post" action="/search">
-						 
-						<div>
-							<button class="btn btn-primary"> Back to Search</button>
-						</div>
-						
+
+							<div>
+								<button class="btn btn-primary">Back to Search</button>
+							</div>
+
 						</form>
 						<div>
-						
-						<form method="post" action="/event-details/${fave}/${event.id}">
-						<c:if test="${fave}">
-						<button type="submit" name="fave" value="true">Unfavorite</button>
-						</c:if>
-						<c:if test="${!fave}">
-						<button type="submit" name="fave" value="false">Favorite</button>
-						</c:if>
-						</form>
-						
+
+							<form method="post" action="/event-details/${fave}/${event.id}">
+								<c:if test="${fave}">
+									<button type="submit" name="fave" value="true">Unfavorite</button>
+								</c:if>
+								<c:if test="${!fave}">
+									<button type="submit" name="fave" value="false">Favorite</button>
+								</c:if>
+							</form>
+
 						</div>
 					</div>
 				</div>
@@ -107,13 +109,13 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 
 	<figure>
-		 		<div class="box">
+		<div class="box">
 			<canvas id="icon" width="128" height="128"></canvas>
-		</div> 
-<%-- 	 		<div class="box">
+		</div>
+		<%-- 	 		<div class="box">
 			<canvas id="icon0" width="128" height="128"></canvas>
 		</div>  --%>
-<%-- 				<div class="box">
+		<%-- 				<div class="box">
 			<canvas id="icon0" width="128" height="128"></canvas>
 		</div>
 						<div class="box">
@@ -123,36 +125,35 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 	<script>
 		var icon = "${ icon }";
-		var iconString = <c:out value="${icon}"/>;
+		var iconString = "<c:out value="${icon}"/>";
 		var skycons = new Skycons({
 			"monochrome" : false,
 			"color" : {
 				"main" : "black",
-				"moon" : "gold", 
+				"moon" : "gold",
 				"fog" : "gray",
 				"fogbank" : "light gray",
-				"light_cloud": "gray",
-				"cloud" : "gold", 
+				"light_cloud" : "gray",
+				"cloud" : "gold",
 				"dark_cloud" : "dark gray",
 				"thunder" : "dark gray",
-				"snow": "light blue",
+				"snow" : "light blue",
 				"hail" : "gray",
 				"sleet" : "dark gray",
-				"wind": "lime green",
+				"wind" : "lime green",
 				"leaf" : "green",
 				"rain" : "blue",
-				"sun": "yellow",
+				"sun" : "yellow",
 				"thunderbolts" : "yellow"
 			}
 		});
 
-
 		// you can add a canvas by it's ID...
- 		skycons.add("icon0", Skycons.icon);
+		skycons.add("icon0", Skycons.icon);
 		skycons.add("icon", Skycons.iconString);
- 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
- 		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
- 		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
+		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
+		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
@@ -171,7 +172,6 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY); */
-		
 
 		// ...or by the canvas DOM element itself.
 		skycons.add(document.getElementById("icon2"), Skycons.RAIN);

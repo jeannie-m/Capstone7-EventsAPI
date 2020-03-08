@@ -62,7 +62,7 @@ public class EventsController2 {
 		//transform the icon string to the format needed for icon canvas function
 		String icon = weather.getIcon().toUpperCase().replace('-', '_');
 		mav.addObject("weather", weather);
-		mav.addObject(icon);
+		mav.addObject("icon", icon);
 		System.out.println(icon);
 		
 		return mav;
@@ -71,19 +71,26 @@ public class EventsController2 {
 
 	@PostMapping("/event-details/{fave}/{id}")
 	public ModelAndView favorite(@PathVariable("fave") Boolean fave, @PathVariable("id") String id) {
-
+		
+		ModelAndView mav = new ModelAndView("redirect:/event-details/"+id);
 		Event event = apiServ2.getEventById(id);
 
 		if (fave == false) {
 		
 		FavEvent fEvent = new FavEvent();
-				
+		//On the bucket list, the events are showing up with the images(?) but none of the rest of the details
+				//It doesn't appear to be running the following code:
 				fEvent.setEventId(event.getId());
+			System.out.println(event.getId());
 				fEvent.setImage(event.getImages().get(0).getUrl());
+			System.out.println(event.getImages().get(0).getUrl());
 				fEvent.setDate(event.getDates().getStart().getLocalDate());
-				fEvent.setLink(event.get_links().getSelf().getHref());
-				fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());;
+				fEvent.setLink(event.get_links().getSelf().getHref());				
+				fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());;				
 				fEvent.setGenre(event.getClassifications().get(0).getGenre().getName());
+				fEvent.setAttractions(event.get_embedded().getAttractions());
+				
+				mav.addObject("event", fEvent);
 	
 
 		eventsDao.save(fEvent);
@@ -91,7 +98,7 @@ public class EventsController2 {
 			eventsDao.deleteById((eventsDao.findByEventId(id).getId()));
 		}
 
-		return new ModelAndView("redirect:/event-details/"+id);
+		return mav;
 	}
 
 }
