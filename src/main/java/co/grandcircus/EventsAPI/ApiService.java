@@ -30,7 +30,7 @@ public class ApiService {
 		rt = new RestTemplateBuilder().additionalInterceptors(interceptor).build();
 	}
 
-	public Embedded1 getEvent(String zipCode) {
+	public Embedded1 getEvent(String zipCode) { //creates list of events by zip code
 
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode="
 				+ zipCode + "&radius=75&unit=miles&size=400";
@@ -42,7 +42,7 @@ public class ApiService {
 		return events;
 	}
 
-	public Embedded1 byVenue(String venue, String zipCode) {
+	public Embedded1 byVenue(String venue, String zipCode) { //creates a list of events by venue id
 
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&venueId="
 				+ venue + "&postalCode=" + zipCode + "&radius=75&unit=miles&locale=*&size=100";
@@ -54,7 +54,7 @@ public class ApiService {
 		return events;
 	}
 
-	public Embedded1 byKeyword(String keyword, String zipCode) {
+	public Embedded1 byKeyword(String keyword, String zipCode) { // creates a list of events by keyword
 
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&keyword="
 				+ keyword + "&postalCode=" + zipCode + "&radius=75&unit=miles&size=100";
@@ -65,7 +65,7 @@ public class ApiService {
 		return events;
 	}
 
-	public Embedded1 byDate(String date, String zipCode) {
+	public Embedded1 byDate(String date, String zipCode) { // creates a list of events by start date
 
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode="
 				+ zipCode + "&radius=75&unit=miles&locale=*&startDateTime=" + date + "T00:00:00Z";
@@ -77,7 +77,7 @@ public class ApiService {
 		return events;
 	}
 
-	public Embedded1 byEndDate(String date, String zipCode) {
+	public Embedded1 byEndDate(String date, String zipCode) { // creates a list of event by end date
 
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode="
 				+ zipCode + "&radius=75&unit=miles&locale=*&endDateTime=" + date + "T00:00:00Z";
@@ -89,7 +89,7 @@ public class ApiService {
 		return events;
 	}
 
-	public Embedded1 byDates(String date, String endDate, String zipCode) {
+	public Embedded1 byDates(String date, String endDate, String zipCode) { // creates a list of events with start and end date
 
 		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&postalCode="
 				+ zipCode + "&radius=75&unit=miles&locale=*&startDateTime=" + date + "T00:00:00Z&endDateTime=" + endDate
@@ -102,7 +102,7 @@ public class ApiService {
 		return events;
 	}
 
-	public List<Venue> searchVenues(String venue) {
+	public List<Venue> searchVenues(String venue) { //creates a list of venues by keyword
 
 		String url = "https://app.ticketmaster.com/discovery/v2/venues?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&keyword="
 				+ venue + "&locale=*&countryCode=US";
@@ -113,14 +113,18 @@ public class ApiService {
 		
 		return venues;
 	}
-	public String url(String eventId) {
+	public Embedded1 byGenre(String genre, String zipCode) { // creates a list of events with start and end date
 
-		String url = "https://app.ticketmaster.com/discovery/v2/events/"+eventId+"?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*";
-		
-		String newUrl = rt.getForObject(url, String.class);
-		System.out.println(newUrl);
-		return newUrl;
+		String url = "https://app.ticketmaster.com/discovery/v2/events?apikey=tRJz11yleZhHxrcDsW5h4UrvpvuoMzsy&postalCode="+zipCode+"&radius=75&unit=miles&locale=*&genreId="+genre;
+
+		TMResponse response = rt.getForObject(url, TMResponse.class);
+
+		Embedded1 events = response.get_embedded();
+
+		return events;
 	}
+	
+	
 }
 
 

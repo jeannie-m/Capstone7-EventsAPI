@@ -25,7 +25,9 @@
 
 <h1>Welcome to the Events App</h1>
 
-<h2>${message}</h2>
+<h2>${message}</h2> 
+<!--  sends a message when zip code failed to return events -->
+
 
 <form class="container" action="/search">
 
