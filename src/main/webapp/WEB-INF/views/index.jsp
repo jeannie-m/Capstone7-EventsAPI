@@ -21,6 +21,7 @@
 	crossorigin="anonymous"><link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<%@ include file="partials/navbar.jsp"%>
 
 <h1>Welcome to the Events App</h1>
 

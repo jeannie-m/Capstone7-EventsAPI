@@ -27,7 +27,7 @@
 <title>Bucket List</title>
 </head>
 <body>
-
+<%@ include file="partials/navbar.jsp"%>
 
 <div class="container">
 		<c:forEach items="${ bucketList }" var="event"

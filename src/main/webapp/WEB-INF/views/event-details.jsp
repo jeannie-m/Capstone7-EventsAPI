@@ -31,7 +31,7 @@
 <title>Event Details</title>
 </head>
 <body>
-
+<%@ include file="partials/navbar.jsp"%>
 
 	<div class="container">
 		<div class="row v-center-parent">
@@ -107,9 +107,12 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 
 	<figure>
-	 		<div class="box">
-			<canvas id="icon0" width="128" height="128"></canvas>
+		 		<div class="box">
+			<canvas id="icon" width="128" height="128"></canvas>
 		</div> 
+<%-- 	 		<div class="box">
+			<canvas id="icon0" width="128" height="128"></canvas>
+		</div>  --%>
 				<div class="box">
 			<canvas id="icon1" width="128" height="128"></canvas>
 		</div>
@@ -145,8 +148,8 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 
 		// you can add a canvas by it's ID...
- 		skycons.add("icon0", Skycons.icon);
-		sycons.add("icon", Skycons.iconString);
+/*  		skycons.add("icon0", Skycons.icon);
+	sycons.add("icon", Skycons.iconString); */	
  		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
  		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
  		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
