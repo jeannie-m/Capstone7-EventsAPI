@@ -27,7 +27,7 @@
 <title>Bucket List</title>
 </head>
 <body>
-
+<%@ include file="partials/navbar.jsp"%>
 
 <div class="container">
 		<c:forEach items="${ bucketList }" var="event"
@@ -54,10 +54,10 @@
 						</h4>
 						<!-- Text -->
 						
-						<p class="card-text">Date: ${ date }</p>
-						<p class="card-text">Genre: ${ genre.name }</p>
-						<p class="card-text">Featuring: ${ attractions[0].name }</p> 
-						<p class="card-text">Weather: ${ weather.summary }</p>
+						<p class="card-text">Date: ${ event.date }</p>
+						<p class="card-text">Genre: ${ event.genre }</p>
+						<p class="card-text">Featuring: ${ event.attractions[0].name }</p> 
+						<p class="card-text">Weather: ${ event.weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
 						<div>
@@ -73,7 +73,7 @@
 
 			</div>
 			<c:if
-				test="${productCounter.count % 3 == 0||productCounter.count == fn:length(values)}">
+				test="${eventCounter.count % 3 == 0||eventCounter.count == fn:length(values)}">
 	</div>
 	<br>
 	</c:if>

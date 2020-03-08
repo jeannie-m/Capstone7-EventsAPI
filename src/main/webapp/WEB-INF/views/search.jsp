@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<%@ include file="partials/navbar.jsp"%>
 
 	<nav class="navbar navbar-expand-lg">
 
