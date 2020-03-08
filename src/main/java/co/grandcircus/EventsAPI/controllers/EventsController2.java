@@ -75,7 +75,7 @@ public class EventsController2 {
 		ModelAndView mav = new ModelAndView("redirect:/event-details/"+id);
 		Event event = apiServ2.getEventById(id);
 
-		if (fave == false) {
+		if (fave == false) { //favorites an event and adds it to SQL database if not already favorited
 		
 		FavEvent fEvent = new FavEvent();
 		//On the bucket list, the events are showing up with the images(?) but none of the rest of the details
@@ -94,7 +94,7 @@ public class EventsController2 {
 	
 
 		eventsDao.save(fEvent);
-		} else if (fave == true) {
+		} else if (fave == true) { //deletes an event from the database if already favorited
 			eventsDao.deleteById((eventsDao.findByEventId(id).getId()));
 		}
 

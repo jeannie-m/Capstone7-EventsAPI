@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title> 
+<title>Insert title here</title>
 <!-- Favicon It's a coffee cup right now. Change it to whatever you want-->
 <link rel="icon" type="image/png"
 	href="https://i2.wp.com/awakedetroit.com/wp-content/uploads/2019/04/cropped-Favicon.png?ssl=1">
@@ -37,6 +37,8 @@
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
 				by Keyword</button>
 		</form>
+		<!-- searches by keyword -->
+
 
 		<form method="post" action="/search" class="form-inline ml-auto">
 
@@ -48,22 +50,30 @@
 					name="endDate" />
 			</p>
 			<input type="hidden" name="zipCode" value="${zipCode}">
-
+			<!-- searches by date -->
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
 				By Date</button>
 
 		</form>
-
+		<!-- searches by venue keyword -->
 		<form method="post" class="form-inline ml-auto" action="/search">
-						<input class="form-control mr-sm-2" name="venuename" type="search" placeholder="Venue">
+			<input class="form-control mr-sm-2" name="venuename" type="search"
+				placeholder="Venue">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Choose
 				Venue</button>
 		</form>
 	</nav>
 
+	<!-- creates list of events -->
 	<table class="table table-striped">
+
+
+			<h3>${message}</h3>
+
+
 		<tr>
 			<th>Event</th>
+			<th>Genre</th>
 			<th>Date</th>
 			<th>Venue</th>
 			<th>Details</th>
@@ -73,6 +83,12 @@
 			<tr>
 
 				<td>${event.name}</td>
+
+				<form method="post" action="/search">
+					<td><button class="btn btn-secondary"
+							value="${event.classifications[0].genre.id}" name="genre">${event.classifications[0].genre.name}</button></td>
+				</form>
+				
 				<td>${event.dates.start.localDate}</td>
 
 
