@@ -113,16 +113,16 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 <%-- 	 		<div class="box">
 			<canvas id="icon0" width="128" height="128"></canvas>
 		</div>  --%>
-				<div class="box">
-			<canvas id="icon1" width="128" height="128"></canvas>
+<%-- 				<div class="box">
+			<canvas id="icon0" width="128" height="128"></canvas>
 		</div>
 						<div class="box">
 			<canvas id="icon2" width="128" height="128"></canvas>
-		</div>
+		</div> --%>
 	</figure>
 
 	<script>
-	//var icon = "${ icon }";
+		var icon = "${ icon }";
 		var iconString = <c:out value="${icon}"/>;
 		var skycons = new Skycons({
 			"monochrome" : false,
@@ -148,8 +148,8 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 
 		// you can add a canvas by it's ID...
-/*  		skycons.add("icon0", Skycons.icon);
-	sycons.add("icon", Skycons.iconString); */	
+ 		skycons.add("icon0", Skycons.icon);
+		skycons.add("icon", Skycons.iconString);
  		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
  		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
  		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
