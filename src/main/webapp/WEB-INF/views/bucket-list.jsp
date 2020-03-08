@@ -73,7 +73,7 @@
 
 			</div>
 			<c:if
-				test="${productCounter.count % 3 == 0||productCounter.count == fn:length(values)}">
+				test="${eventCounter.count % 3 == 0||eventCounter.count == fn:length(values)}">
 	</div>
 	<br>
 	</c:if>
