@@ -74,7 +74,7 @@
 						<form method="post" action="/search">
 						 
 						<div>
-							<button type="submit" class="btn btn-primary"> Back to Search</button>
+							<button class="btn btn-primary"> Back to Search</button>
 						</div>
 						
 						</form>

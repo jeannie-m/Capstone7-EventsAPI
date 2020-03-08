@@ -55,7 +55,6 @@ public class ApiService2 {
 		
 		String url = "https://api.darksky.net/forecast/" + apiKeyDS + "/" + lat + "," + lon + "," + 
 		localDate + "T" + localTime;
-		System.out.println(url);
 		DSResponse response = rt.getForObject(url, DSResponse.class);
 		return response.getCurrently();
 	}

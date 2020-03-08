@@ -1,5 +1,6 @@
 package co.grandcircus.EventsAPI.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,14 +14,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.EventsAPI.ApiService;
-
 import co.grandcircus.EventsAPI.Dao.EventsDao;
 import co.grandcircus.EventsAPI.Entities.FavEvent;
-
-import co.grandcircus.EventsAPI.Entities.ZipCode;
-
 import co.grandcircus.EventsAPI.Model.Embedded1;
 import co.grandcircus.EventsAPI.Model.Event;
+import co.grandcircus.EventsAPI.Model.Venue;
 
 @Controller
 public class EventsController {
@@ -69,12 +67,14 @@ public class EventsController {
 
 	@PostMapping("/search")
 	public ModelAndView search(@RequestParam(name = "venue", required = false) String venue,
-			@RequestParam(name = "keyword", required = false) String keyword, @SessionAttribute("zipCode") String zipCode,
+			@RequestParam(name = "keyword", required = false) String keyword, 
+			@SessionAttribute("zipCode") String zipCode,
 			@RequestParam(name = "date", required = false) String startDate,
-			@RequestParam(name = "endDate", required = false) String endDate) {
+			@RequestParam(name = "endDate", required = false) String endDate,
+			@RequestParam(name = "venuename", required = false) String venueName) {
 
 		Embedded1 embedded = new Embedded1();
-//		String zipCode = zipCode2.getZipCode();
+
 		
 		if (keyword != null && !keyword.isEmpty()) {
 
@@ -106,9 +106,14 @@ public class EventsController {
 			List<Event> events = embedded.getEvents();
 
 			return new ModelAndView("search", "events", events);
-		} else {
+		} else if (venueName != null && !venueName.isEmpty()) {
 
-			return new ModelAndView("search");
+			List<Venue> venues = apiServ.searchVenues(venueName);
+			return new ModelAndView("venues", "venues", venues);
+			
+		} else{
+
+			return new ModelAndView("redirect:/search", "zipCode", zipCode);
 		}
 
 	}
