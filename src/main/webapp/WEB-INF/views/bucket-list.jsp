@@ -105,7 +105,7 @@
 							<div></div>
 							<div>
 								<form method="post" action="/bucket-list">
-									<input type="hidden" name="id" value="event.eventId">
+									<input type="hidden" name="id" value="${event.eventId}">
 									<button type="submit" name="fave" value="true"
 										class="btn btn-outline-danger">
 										<i class="fas fa-heart-broken"></i> Unfavorite

@@ -253,7 +253,7 @@ public class EventsController {
 	}
 
 	@PostMapping("/bucket-list")
-	public ModelAndView deleteFave(@RequestParam(id) String Id) {
+	public ModelAndView deleteFave(@RequestParam("id") String Id) {
 		Long deleteId = eDao.findByEventId(Id).getId();
 		eDao.deleteById(deleteId);
 		return new ModelAndView("redirect:/bucket-list");
