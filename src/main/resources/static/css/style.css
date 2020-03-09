@@ -18,7 +18,7 @@ body {
  	background-attachment: fixed;	
 }
 
-table, tr, td, container, .col-md-12, .search-card {
+table, tr, td, .col-md-12, .search-card {
 	background-color:rgba(255, 255, 255, 0.4);
 }
 
