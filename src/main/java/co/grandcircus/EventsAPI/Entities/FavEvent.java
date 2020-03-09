@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -30,10 +28,10 @@ public class FavEvent {
 	private String genre;
 	private Boolean fave;
 	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Currently weather;
 	
-	@ManyToMany   
+	@ManyToMany  (cascade = CascadeType.ALL)
 	private List<Attraction> attractions;
 //	(cascade = { CascadeType.ALL })
 //	 @JoinTable(

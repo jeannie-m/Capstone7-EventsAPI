@@ -81,12 +81,22 @@ public class EventsController2 {
 		//On the bucket list, the events are showing up with the images(?) but none of the rest of the details
 				//It doesn't appear to be running the following code:
 				fEvent.setEventId(event.getId());
-			System.out.println(event.getId());
+				fEvent.setName(event.getName());
+				
+				String lat = event.get_embedded().getVenues().get(0).getLocation().getLatitude();
+				String lon = event.get_embedded().getVenues().get(0).getLocation().getLongitude();
+				String localDate = event.getDates().getStart().getLocalDate();
+				String localTime = event.getDates().getStart().getLocalTime();
+				Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);				
+				
+				
+				fEvent.setWeather(weather);
+				
+				fEvent.setAttractions(event.get_embedded().getAttractions());
 				fEvent.setImage(event.getImages().get(0).getUrl());
-			System.out.println(event.getImages().get(0).getUrl());
 				fEvent.setDate(event.getDates().getStart().getLocalDate());
-				fEvent.setLink(event.get_links().getSelf().getHref());				
-				fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());;				
+				fEvent.setLink(event.getUrl());
+				fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());;
 				fEvent.setGenre(event.getClassifications().get(0).getGenre().getName());
 				fEvent.setAttractions(event.get_embedded().getAttractions());
 				
