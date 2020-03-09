@@ -22,11 +22,11 @@
 	integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF"
 	crossorigin="anonymous">
 <!-- Your custom styles -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 <title>Bucket List</title>
 </head>
-<body>
+<body class="cards">
 <%@ include file="partials/navbar.jsp"%>
 
 <div class="container">
@@ -49,24 +49,28 @@
 					<div class="card-body">
 
 						<!-- Title -->
-						<h4 class="card-title">
+						<h2 class="card-title">
 							<a>${event.name}</a>
-						</h4>
+						</h2>
 						<!-- Text -->
 						
 						<p class="card-text">Date: ${ event.date }</p>
 						<p class="card-text">Genre: ${ event.genre }</p>
-						<p class="card-text">Featuring: ${ event.attractions[0].name }</p> 
 						<p class="card-text">Weather: ${ event.weather.summary }</p>
-						<p class="card-text">Temperature: ${ weather.temperature }</p>
-						<!-- Button -->
+						<p class="card-text">Temperature: ${ event.weather.temperature } f</p>
+						<p class="card-text">Featuring: ${ event.attractions[0].name }</p> 
+
 						<div>
-							<a href="${ link }" class="btn btn-primary"> View on
+							<a href="${ event.link }" class="btn btn-primary"> View on
 								TicketMaster</a>
 						</div>
-						<div>
-							<a href="/search" class="btn btn-primary"> Back to Search</a>
-						</div>
+						<form method="post" action="/search">
+
+							<div>
+								<button class="btn btn-primary">Back to Search</button>
+							</div>
+
+						</form>
 					</div>
 				</div>
 				<!-- Card -->
