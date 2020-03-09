@@ -109,9 +109,15 @@ public class ApiService {
 		
 		Event response = rt.getForObject(url, Event.class);
 		
+		if (response != null) {
+		
 		List<Venue> venues = response.get_embedded().getVenues();
 		
 		return venues;
+		
+		}
+		
+		return null;
 	}
 	public Embedded1 byGenre(String genre, String zipCode) { // creates a list of events with start and end date
 

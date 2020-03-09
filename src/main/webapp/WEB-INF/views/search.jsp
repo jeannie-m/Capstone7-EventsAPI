@@ -23,7 +23,7 @@
 	rel="stylesheet"
 	integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <%@ include file="partials/navbar.jsp"%>

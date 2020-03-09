@@ -26,7 +26,7 @@
 	integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF"
 	crossorigin="anonymous">
 <!-- Your custom styles -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 <script type="text/javascript" src="/javascript.js"></script>
 <title>Event Details</title>
 </head>
