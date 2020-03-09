@@ -70,6 +70,31 @@
 										<canvas id="icon2" width="128" height="128"></canvas>
 									</div>
 								</figure>
+								<script>
+								var skycons = new Skycons({
+									"monochrome" : false,
+									"color" : {
+										"main" : "black",
+										"moon" : "gold",
+										"fog" : "gray",
+										"fogbank" : "light gray",
+										"light_cloud" : "gray",
+										"cloud" : "gold",
+										"dark_cloud" : "dark gray",
+										"thunder" : "dark gray",
+										"snow" : "light blue",
+										"hail" : "gray",
+										"sleet" : "dark gray",
+										"wind" : "lime green",
+										"leaf" : "green",
+										"rain" : "blue",
+										"sun" : "yellow",
+										"thunderbolts" : "yellow"
+									}
+								});
+								skycons.add("icon2", Skycons.${event.weather.icon});
+								skycons.play();
+								</script>
 								<p class="mb-0">${ event.weather.summary }</p>
 								<p>${ event.weather.temperature }&#176F</p>
 							</div>
@@ -77,24 +102,16 @@
 
 						<!-- Button -->
 						<div class="split">
-						<div></div>
-						<div>
-						<form method="post" action="/bucket-list">
-						<input type="hidden" name="id" value="event.eventId">
-							<c:if test="${fave}">
-								<button type="submit" name="fave" value="true"
-									class="btn btn-outline-danger">
-									<i class="fas fa-heart-broken"></i> Unfavorite
-								</button>
-							</c:if>
-							<c:if test="${!fave}">
-								<button type="submit" name="fave" value="false"
-									class="btn btn-outline-danger">
-									<i class="fas fa-heart"></i> Favorite
-								</button>
-							</c:if>
-						</form>
-						</div>
+							<div></div>
+							<div>
+								<form method="post" action="/bucket-list">
+									<input type="hidden" name="id" value="event.eventId">
+									<button type="submit" name="fave" value="true"
+										class="btn btn-outline-danger">
+										<i class="fas fa-heart-broken"></i> Unfavorite
+									</button>
+								</form>
+							</div>
 						</div>
 						<div class="split">
 							<div>
@@ -122,7 +139,63 @@
 	</div>
 
 
+	<script>
+		var icon = "${ icon }";
+		var iconString = "<c:out value="${icon}"/>";
+		var skycons = new Skycons({
+			"monochrome" : false,
+			"color" : {
+				"main" : "black",
+				"moon" : "gold",
+				"fog" : "gray",
+				"fogbank" : "light gray",
+				"light_cloud" : "gray",
+				"cloud" : "gold",
+				"dark_cloud" : "dark gray",
+				"thunder" : "dark gray",
+				"snow" : "light blue",
+				"hail" : "gray",
+				"sleet" : "dark gray",
+				"wind" : "lime green",
+				"leaf" : "green",
+				"rain" : "blue",
+				"sun" : "yellow",
+				"thunderbolts" : "yellow"
+			}
+		});
 
+		// you can add a canvas by it's ID...
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY);
+		skycons.add("icon2", Skycons.${event.weather.icon});
+
+
+		// ...or by the canvas DOM element itself.
+		skycons.add(document.getElementById("icon2"), Skycons.RAIN);
+
+		// if you're using the Forecast API, you can also supply
+		// strings: "partly-cloudy-day" or "rain".
+
+		// start animation!
+		skycons.play();
+
+		// you can also halt animation with skycons.pause()
+	</script>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<script
+		src=" https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 
 </body>
 </html>

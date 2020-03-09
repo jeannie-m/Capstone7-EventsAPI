@@ -111,22 +111,6 @@
 	icon optional
 A machine-readable text summary of this data point, suitable for selecting an icon for display. If defined, this property will have one of the following values: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined, as additional values, such as hail, thunderstorm, or tornado, may be defined in the future.)  -->
 
-
-		<figure>
-			<div class="box">
-				<canvas id="icon2" width="128" height="128"></canvas>
-			</div>
-			<%-- 	 		<div class="box">
-			<canvas id="icon0" width="128" height="128"></canvas>
-		</div>  --%>
-			<%-- 				<div class="box">
-			<canvas id="icon0" width="128" height="128"></canvas>
-		</div>
-						<div class="box">
-			<canvas id="icon2" width="128" height="128"></canvas>
-		</div> --%>
-		</figure>
-
 		<script>
 		var icon = "${ icon }";
 		var iconString = "<c:out value="${icon}"/>";
@@ -153,29 +137,9 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		});
 
 		// you can add a canvas by it's ID...
-		skycons.add("icon0", Skycons.icon);
-		skycons.add("icon", Skycons.iconString);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
+		skycons.add("icon1", Skycons.PARTLY_CLOUDY);
 		skycons.add("icon2", Skycons.${icon});
-		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY); */
+
 
 		// ...or by the canvas DOM element itself.
 		skycons.add(document.getElementById("icon2"), Skycons.RAIN);
