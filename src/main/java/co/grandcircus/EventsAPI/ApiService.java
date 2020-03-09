@@ -36,7 +36,6 @@ public class ApiService {
 				+ zipCode + "&radius=75&unit=miles&size=400";
 
 		TMResponse response = rt.getForObject(url, TMResponse.class);
-
 		Embedded1 events = response.get_embedded();
 
 		return events;
@@ -48,7 +47,6 @@ public class ApiService {
 				+ venue + "&postalCode=" + zipCode + "&radius=75&unit=miles&locale=*&size=100";
 
 		TMResponse response = rt.getForObject(url, TMResponse.class);
-
 		Embedded1 events = response.get_embedded();
 
 		return events;

@@ -90,8 +90,7 @@ public class EventsController2 {
 				Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);				
 				
 				
-				fEvent.setWeather(weather);
-				
+				fEvent.setWeather(weather);				
 				fEvent.setAttractions(event.get_embedded().getAttractions());
 				fEvent.setImage(event.getImages().get(0).getUrl());
 				fEvent.setDate(event.getDates().getStart().getLocalDate());

@@ -26,88 +26,98 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<%@ include file="partials/navbar.jsp"%>
+	<%@ include file="partials/navbar.jsp"%>
 
-	<nav class="navbar navbar-expand-lg">
+	<container class="container-fluid bg-relief">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Card -->
+			<div class="card v-center-child search-card">
 
-		<form method="post" action="/search" class="form-inline ml-auto">
-			<input type="hidden" name="zipCode" value="${zipCode}"> <input
-				class="form-control mr-sm-2" name="keyword" type="search"
-				placeholder="Keyword">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
-				by Keyword</button>
-		</form>
-		<!-- searches by keyword -->
+				<nav class="navbar navbar-expand-lg">
 
-
-		<form method="post" action="/search" class="form-inline ml-auto">
-
-			<p>
-				Start Date<input class="form-inline mr-sm-2" type="date" name="date" />
-			</p>
-			<p>
-				End Date<input class="form-inline mr-sm-2" type="date"
-					name="endDate" />
-			</p>
-			<input type="hidden" name="zipCode" value="${zipCode}">
-			<!-- searches by date -->
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
-				By Date</button>
-
-		</form>
-		<!-- searches by venue keyword -->
-		<form method="post" class="form-inline ml-auto" action="/search">
-			<input class="form-control mr-sm-2" name="venuename" type="search"
-				placeholder="Venue">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Choose
-				Venue</button>
-		</form>
-	</nav>
-
-	<!-- creates list of events -->
-	<table class="table table-striped">
+					<form method="post" action="/search" class="form-inline ml-auto">
+						<input type="hidden" name="zipCode" value="${zipCode}"> <input
+							class="form-control mr-sm-2" name="keyword" type="search"
+							placeholder="Keyword">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+							by Keyword</button>
+					</form>
+					<!-- searches by keyword -->
 
 
-			<h3>${message}</h3>
+					<form method="post" action="/search" class="form-inline ml-auto">
+
+						<p>
+							Start Date<input class="form-inline mr-sm-2" type="date"
+								name="date" />
+						</p>
+						<p>
+							End Date<input class="form-inline mr-sm-2" type="date"
+								name="endDate" />
+						</p>
+						<input type="hidden" name="zipCode" value="${zipCode}">
+						<!-- searches by date -->
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+							By Date</button>
+
+					</form>
+					<!-- searches by venue keyword -->
+					<form method="post" class="form-inline ml-auto" action="/search">
+						<input class="form-control mr-sm-2" name="venuename" type="search"
+							placeholder="Venue">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Choose
+							Venue</button>
+					</form>
+				</nav>
+
+				<!-- creates list of events -->
+				<table class="table table-striped">
 
 
-		<tr>
-			<th>Event</th>
-			<th>Genre</th>
-			<th>Date</th>
-			<th>Venue</th>
-			<th>Details</th>
-		</tr>
-
-		<c:forEach var="event" items="${events}">
-			<tr>
-
-				<td>${event.name}</td>
-
-				<form method="post" action="/search">
-					<td><button class="btn btn-secondary"
-							value="${event.classifications[0].genre.id}" name="genre">${event.classifications[0].genre.name}</button></td>
-				</form>
-				
-				<td>${event.dates.start.localDate}</td>
+					<h3>${message}</h3>
 
 
-				<form method="post" action="/search">
-					<input type="hidden" name="zipCode" value="${zipCode}">
-					<c:forEach var="local" items="${event._embedded.venues}">
-						<td><button class="btn btn-secondary" value="${local.id}"
-								name="venue">${local.name}</button></td>
+					<tr>
+						<th>Event</th>
+						<th>Genre</th>
+						<th>Date</th>
+						<th>Venue</th>
+						<th>Details</th>
+					</tr>
+
+					<c:forEach var="event" items="${events}">
+						<tr>
+
+							<td>${event.name}</td>
+
+							<form method="post" action="/search">
+								<td><button class="btn btn-secondary"
+										value="${event.classifications[0].genre.id}" name="genre">${event.classifications[0].genre.name}</button></td>
+							</form>
+
+							<td>${event.dates.start.localDate}</td>
+
+
+							<form method="post" action="/search">
+								<input type="hidden" name="zipCode" value="${zipCode}">
+								<c:forEach var="local" items="${event._embedded.venues}">
+									<td><button class="btn btn-secondary" value="${local.id}"
+											name="venue">${local.name}</button></td>
+								</c:forEach>
+							</form>
+							<td><a href="/event-details/${event.id}"
+								class="btn btn-secondary">Details</a></td>
+
+
+						</tr>
 					</c:forEach>
-				</form>
-				<td><a href="/event-details/${event.id}"
-					class="btn btn-secondary">Details</a></td>
 
-
-			</tr>
-		</c:forEach>
-
-	</table>
-
-
+				</table>
+				</div>
+				</div>
+				</div>
+				</container>
+				
 </body>
 </html>

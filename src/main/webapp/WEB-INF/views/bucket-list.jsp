@@ -49,9 +49,9 @@
 					<div class="card-body">
 
 						<!-- Title -->
-						<h4 class="card-title">
+						<h2 class="card-title">
 							<a>${event.name}</a>
-						</h4>
+						</h2>
 						<!-- Text -->
 						
 						<p class="card-text">Date: ${ event.date }</p>

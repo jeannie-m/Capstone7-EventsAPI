@@ -160,35 +160,12 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		skycons.add("icon", Skycons.iconString);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
 		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
-		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY); */
-
-		// ...or by the canvas DOM element itself.
-		skycons.add(document.getElementById("icon2"), Skycons.RAIN);
 
 		// if you're using the Forecast API, you can also supply
 		// strings: "partly-cloudy-day" or "rain".
 
 		// start animation!
 		skycons.play();
-
 		// you can also halt animation with skycons.pause()
 	</script>
 
