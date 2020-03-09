@@ -1,14 +1,10 @@
 package co.grandcircus.EventsAPI.controllers;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +17,6 @@ import co.grandcircus.EventsAPI.Dao.EventsDao;
 import co.grandcircus.EventsAPI.Entities.FavEvent;
 import co.grandcircus.EventsAPI.Model.Embedded1;
 import co.grandcircus.EventsAPI.Model.Event;
-import co.grandcircus.EventsAPI.Model.Genre;
 import co.grandcircus.EventsAPI.Model.Venue;
 
 @Controller
@@ -50,8 +45,9 @@ public class EventsController {
 	@RequestMapping("/search")
 	public ModelAndView search(@RequestParam("zipCode") String zipCode,
 			@RequestParam(name = "message", required = false) String message) {
-		//I can't get this to work yet: https://www.baeldung.com/spring-data-jpa-pagination-sorting
-		//Pageable firstPageWithTwentyElements = PageRequest.of(0, 20);
+		// I can't get this to work yet:
+		// https://www.baeldung.com/spring-data-jpa-pagination-sorting
+		// Pageable firstPageWithTwentyElements = PageRequest.of(0, 20);
 
 		Embedded1 embedded = new Embedded1();
 		embedded = apiServ.getEvent(zipCode); // gets events using the zipcode
@@ -59,14 +55,13 @@ public class EventsController {
 		if (embedded == null) { // if the entered zip code returns no events, this redirects back to main page
 
 			return new ModelAndView("redirect:/", "message", "That zip code did not return any events.");
-		} else if (message != null){
+		} else if (message != null) {
 			ModelAndView mav = new ModelAndView("/search");
-			mav.addObject("message",
-					"That search not return any events.");
+			mav.addObject("message", "That search not return any events.");
 			mav.addObject("zipCode", zipCode);
-			
+
 			return mav;
-		} 
+		}
 
 		List<Event> events = embedded.getEvents(); // creates a list of events
 
@@ -84,7 +79,7 @@ public class EventsController {
 			@RequestParam(name = "date", required = false) String startDate,
 			@RequestParam(name = "endDate", required = false) String endDate,
 			@RequestParam(name = "venuename", required = false) String venueName,
-			@RequestParam(name = "genre", required = false) String genre, 
+			@RequestParam(name = "genre", required = false) String genre,
 			@RequestParam(name = "pageNum", required = false) String pageNum) {
 // pulls in a lot of potential variables
 
@@ -93,33 +88,33 @@ public class EventsController {
 		if (keyword != null && !keyword.isEmpty()) { // used if there is a search keyword
 
 			embedded = apiServ.byKeyword(keyword, zipCode);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any events.");
+				mav.addObject("message", "That search not return any events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
 
 			List<Event> events = embedded.getEvents();
 
 			return new ModelAndView("search", "events", events);
-			
+
 		} else if (venue != null && !venue.isEmpty()) { // used if there is a venue id
 
 			embedded = apiServ.byVenue(venue, zipCode);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any events.");
+				mav.addObject("message", "That search not return any events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			List<Event> events = embedded.getEvents();
 
 			return new ModelAndView("search", "events", events);
@@ -128,16 +123,16 @@ public class EventsController {
 		} else if ((startDate != null && !startDate.isEmpty()) && (endDate == null || endDate.isEmpty())) {
 
 			embedded = apiServ.byDate(startDate, zipCode);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any events.");
+				mav.addObject("message", "That search not return any events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			List<Event> events = embedded.getEvents();
 
 			return new ModelAndView("search", "events", events);
@@ -146,16 +141,16 @@ public class EventsController {
 		} else if ((endDate != null && !endDate.isEmpty()) && (startDate == null || startDate.isEmpty())) {
 
 			embedded = apiServ.byEndDate(endDate, zipCode);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any events.");
+				mav.addObject("message", "That search not return any events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			List<Event> events = embedded.getEvents();
 
 			return new ModelAndView("search", "events", events);
@@ -164,16 +159,16 @@ public class EventsController {
 		} else if ((endDate != null && !endDate.isEmpty()) && (startDate != null && !startDate.isEmpty())) {
 
 			embedded = apiServ.byDates(startDate, endDate, zipCode);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any events.");
+				mav.addObject("message", "That search not return any events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			List<Event> events = embedded.getEvents();
 
 			return new ModelAndView("search", "events", events);
@@ -182,60 +177,59 @@ public class EventsController {
 		} else if (venueName != null && !venueName.isEmpty()) {
 
 			List<Venue> venues = apiServ.searchVenues(venueName);
-			
-			if (venues == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (venues == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any venues.");
+				mav.addObject("message", "That search not return any venues.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			return new ModelAndView("venues", "venues", venues);
 
 		} else if (genre != null && !genre.isEmpty()) {
 
 			embedded = apiServ.byGenre(genre, zipCode);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"That search not return any events.");
+				mav.addObject("message", "That search not return any events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			List<Event> events = embedded.getEvents();
 			return new ModelAndView("search", "events", events);
 
 		} else if (pageNum != null && !pageNum.isEmpty()) { // used if there is a pagenumber
 
 			if (Integer.parseInt(pageNum) < 1) {
-				
+
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"There were no more events.");
+				mav.addObject("message", "There were no more events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
-				
+
 			}
-			
+
 			embedded = apiServ.getEvent(zipCode, pageNum);
-			
-			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search
+									// page
 				ModelAndView mav = new ModelAndView("redirect:/search");
-				mav.addObject("message",
-						"There were no more events.");
+				mav.addObject("message", "There were no more events.");
 				mav.addObject("zipCode", zipCode);
-				
+
 				return mav;
 			}
-			
+
 			List<Event> events = embedded.getEvents();
-			
+
 			ModelAndView mav = new ModelAndView("search");
 			mav.addObject("events", events);
 			mav.addObject("pageNum", pageNum);
@@ -257,4 +251,12 @@ public class EventsController {
 		mav.addObject("bucketList", bucketList);
 		return mav;
 	}
+
+	@PostMapping("/bucket-list")
+	public ModelAndView deleteFave(@RequestParam(id) String Id) {
+		Long deleteId = eDao.findByEventId(Id).getId();
+		eDao.deleteById(deleteId);
+		return new ModelAndView("redirect:/bucket-list");
+	}
+
 }
