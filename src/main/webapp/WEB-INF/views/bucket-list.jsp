@@ -54,14 +54,13 @@
 						</h4>
 						<!-- Text -->
 						
-						<p class="card-text">Date: ${ date }</p>
-						<p class="card-text">Genre: ${ genre.name }</p>
-						<p class="card-text">Featuring: ${ attractions[0].name }</p> 
-						<p class="card-text">Weather: ${ weather.summary }</p>
-						<p class="card-text">Temperature: ${ weather.temperature }</p>
-						<!-- Button -->
+						<p class="card-text">Date: ${ event.date }</p>
+						<p class="card-text">Genre: ${ event.genre }</p>
+						<p class="card-text">Weather: ${ event.weather.summary }</p>
+						<p class="card-text">Temperature: ${ event.weather.temperature } f</p>
+						
 						<div>
-							<a href="${ link }" class="btn btn-primary"> View on
+							<a href="${ event.link }" class="btn btn-primary"> View on
 								TicketMaster</a>
 						</div>
 						<div>
