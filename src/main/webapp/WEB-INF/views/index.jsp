@@ -35,9 +35,7 @@
 			<div class="card v-center-child">
 
 				<!-- Card image -->
-
-				<img class="card-img-top" src="">
-
+				
 				<!-- Card content -->
 				<div class="card-body">
 
