@@ -36,8 +36,6 @@
 
 				<!-- Card image -->
 
-				<h1>Welcome to Eventation</h1>
-
 				<img class="card-img-top" src="">
 
 				<!-- Card content -->
@@ -56,9 +54,9 @@
 								pattern="[.\d]{5}">
 						</p>
 
-							<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-primary">Submit</button>
 
-						</form>
+					</form>
 				</div>
 			</div>
 		</div>

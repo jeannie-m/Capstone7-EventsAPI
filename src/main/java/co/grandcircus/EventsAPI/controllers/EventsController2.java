@@ -79,37 +79,6 @@ public class EventsController2 {
 		ModelAndView mav = new ModelAndView("redirect:/event-details/" + id);
 		Event event = apiServ2.getEventById(id);
 
-<<<<<<< HEAD
-		if (fave == false) { //favorites an event and adds it to SQL database if not already favorited
-		
-		FavEvent fEvent = new FavEvent();
-		//On the bucket list, the events are showing up with the images(?) but none of the rest of the details
-				//It doesn't appear to be running the following code:
-				fEvent.setEventId(event.getId());
-				fEvent.setName(event.getName());
-				
-				String lat = event.get_embedded().getVenues().get(0).getLocation().getLatitude();
-				String lon = event.get_embedded().getVenues().get(0).getLocation().getLongitude();
-				String localDate = event.getDates().getStart().getLocalDate();
-				String localTime = event.getDates().getStart().getLocalTime();
-				Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);				
-				
-				
-				fEvent.setWeather(weather);				
-				fEvent.setAttractions(event.get_embedded().getAttractions());
-				fEvent.setImage(event.getImages().get(0).getUrl());
-				fEvent.setDate(event.getDates().getStart().getLocalDate());
-				fEvent.setLink(event.getUrl());
-				fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());;
-				fEvent.setGenre(event.getClassifications().get(0).getGenre().getName());
-				fEvent.setAttractions(event.get_embedded().getAttractions());
-				
-				mav.addObject("event", fEvent);
-	
-
-		eventsDao.save(fEvent);
-		} else if (fave == true) { //deletes an event from the database if already favorited
-=======
 		if (fave == false) { // favorites an event and adds it to SQL database if not already favorited
 
 			FavEvent fEvent = new FavEvent();
@@ -140,7 +109,7 @@ public class EventsController2 {
 
 			eventsDao.save(fEvent);
 		} else if (fave == true) { // deletes an event from the database if already favorited
->>>>>>> e5fd4f6f49bed1a9ac140c33640fa000ec4a0e06
+
 			eventsDao.deleteById((eventsDao.findByEventId(id).getId()));
 		}
 
