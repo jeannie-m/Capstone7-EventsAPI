@@ -49,6 +49,7 @@ public class EventsController2 {
 		mav.addObject("date", event.getDates().getStart().getLocalDate());
 		mav.addObject("link", event.getUrl());
 		mav.addObject("attractions", event.get_embedded().getAttractions());
+		System.out.println(event.get_embedded().getAttractions());
 		mav.addObject("segment", event.getClassifications().get(0).getSegment());
 		mav.addObject("genre", event.getClassifications().get(0).getGenre());
 		mav.addObject("fave", event.getFave());

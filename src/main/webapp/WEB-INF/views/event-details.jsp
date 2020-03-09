@@ -43,101 +43,92 @@
 				<div class="card v-center-child">
 
 					<!-- Card image -->
-
 					<img class="card-img-top" src="${ image.url }"
 						alt="${ event.name } image">
-
-
-
 
 					<!-- Card content -->
 					<div class="card-body">
 
 						<!-- Title -->
-						<h2 class="card-title">${ event.name }</h2>
-						<h4>${ segment.name }</h4>
 
+						<div class="split">
+							<div>
+								<h2 class="card-title">${ event.name }</h2>
+								<h3>${ date }</h3>
+								<br>
+								<h4>${ segment.name }(${ genre.name })</h4>
+								<p class="card-text">${ attractions[0].name }</p>
 
-						<!-- Text -->
-						<p class="card-text">Date: ${ date }</p>
-						<p class="card-text">Genre: ${ genre.name }</p>
-
-						<p class="card-text">Featuring: ${ attractions[0].name }</p>
-						<!-- 						<div class="box"> -->
-						<%--  I guess I can't easily check if the image path exists? I'd like to display a default image is the image path doesn't match an existing image
-							<c:choose>
-							<c:when "${ icon } ne null"> --%>
-						<%-- 							<img src="/img/${ icon }.png" width="128" height="128"> --%>
-						<%-- </c:when>
-							<c:otherwise>
-							<img src="/img/.png" width="128" height="128">
-							</c:otherwise> --%>
-						<!-- 						</div> -->
-						<figure>
-							<div class="box">
-								<canvas id="icon2" width="128" height="128" ></canvas>
 							</div>
-						</figure>
-
-						<p class="card-text">Weather: ${ weather.summary }</p>
-						<p class="card-text">Temperature: ${ weather.temperature }</p>
-						<!-- Button -->
-						<div>
-							<a href="${ link }" class="btn btn-primary" target="blank">
-								View on TicketMaster</a>
+							<div>
+								<figure>
+									<div class="box">
+										<canvas id="icon2" width="128" height="128"></canvas>
+									</div>
+								</figure>
+								<p class="mb-0">${ weather.summary }</p>
+								<p>${ weather.temperature }&#176F</p>
+							</div>
 						</div>
 
-						<form method="post" action="/search">
-
+						<!-- Button -->
+						<div class="split">
 							<div>
-								<button class="btn btn-primary">Back to Search</button>
+								<form method="post" action="/search">
+									<button class="btn btn-primary">Back to Search</button>
+								</form>
 							</div>
+							<div>
 
 						</form>
 						<div>
 
 							<form method="post" action="/event-details/${fave}/${event.id}">
 								<c:if test="${fave}">
-									<button type="submit" name="fave" value="true"><i class="fas fa-heart">Favorite</i></button>
+									<button type="submit" name="fave" value="true"><i class="fas fa-heart-broken">Unfavorite</i></button>
 								</c:if>
 								<c:if test="${!fave}">
-									<button type="submit" name="fave" value="false"><i class="fas fa-heart-broken">Unfavorite</i></button>
+									<button type="submit" name="fave" value="false"><i class="fas fa-heart">Favorite</i></button>
 								</c:if>
 							</form>
 
+							</div>
+							<div>
+								<a href="${ link }" class="btn btn-primary" target="blank">
+									View on TicketMaster</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- Card -->
+
 		</div>
-		<!-- Card -->
-
-	</div>
 
 
 
 
-	<!--here is the documentation for icons:
+		<!--here is the documentation for icons:
 	icon optional
 A machine-readable text summary of this data point, suitable for selecting an icon for display. If defined, this property will have one of the following values: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined, as additional values, such as hail, thunderstorm, or tornado, may be defined in the future.)  -->
 
 
-	<figure>
-		<div class="box">
-			<canvas id="icon2" width="128" height="128"></canvas>
-		</div>
-		<%-- 	 		<div class="box">
+		<figure>
+			<div class="box">
+				<canvas id="icon2" width="128" height="128"></canvas>
+			</div>
+			<%-- 	 		<div class="box">
 			<canvas id="icon0" width="128" height="128"></canvas>
 		</div>  --%>
-		<%-- 				<div class="box">
+			<%-- 				<div class="box">
 			<canvas id="icon0" width="128" height="128"></canvas>
 		</div>
 						<div class="box">
 			<canvas id="icon2" width="128" height="128"></canvas>
 		</div> --%>
-	</figure>
+		</figure>
 
-	<script>
+		<script>
 		var icon = "${ icon }";
 		var iconString = "<c:out value="${icon}"/>";
 		var skycons = new Skycons({
@@ -199,21 +190,20 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		// you can also halt animation with skycons.pause()
 	</script>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
-	<script
-		src=" https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
-
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"></script>
+		<script
+			src=" https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 </body>
 </html>

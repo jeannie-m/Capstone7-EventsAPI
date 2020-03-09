@@ -29,3 +29,9 @@ table, tr, td, container, .col-md-12, .search-card {
 .fa-heart-broken{
     color: red !important;
 }
+
+.split{
+	display: flex;
+	justify-content: space-between;
+}
+
