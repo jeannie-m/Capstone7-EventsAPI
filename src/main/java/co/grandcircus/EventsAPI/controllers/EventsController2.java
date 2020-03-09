@@ -101,7 +101,6 @@ public class EventsController2 {
 			fEvent.setDate(event.getDates().getStart().getLocalDate());
 			fEvent.setLink(event.getUrl());
 			fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());
-			;
 			fEvent.setGenre(event.getClassifications().get(0).getGenre().getName());
 			fEvent.setAttractions(event.get_embedded().getAttractions());
 

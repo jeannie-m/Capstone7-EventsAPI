@@ -7,7 +7,7 @@ body {
 }
 
 .error {
-	color: dark-red;
+	color: red;
 }
 
 .bg-relief{
@@ -22,3 +22,10 @@ table, tr, td, container, .col-md-12, .search-card {
 	background-color:rgba(255, 255, 255, 0.4);
 }
 
+.fa-heart{
+    color: red !important;
+}
+
+.fa-heart-broken{
+    color: red !important;
+}
