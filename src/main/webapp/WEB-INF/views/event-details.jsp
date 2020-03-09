@@ -27,6 +27,7 @@
 	crossorigin="anonymous">
 <!-- Your custom styles -->
 <link rel="stylesheet" href="../css/style.css">
+<script src="https://kit.fontawesome.com/5ce8ef763e.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/javascript.js"></script>
 <title>Event Details</title>
 </head>
@@ -49,6 +50,7 @@
 					<div class="card-body">
 
 						<!-- Title -->
+
 						<div class="split">
 							<div>
 								<h2 class="card-title">${ event.name }</h2>
@@ -77,14 +79,18 @@
 								</form>
 							</div>
 							<div>
-								<form method="post" action="/event-details/${fave}/${event.id}">
-									<c:if test="${fave}">
-										<button type="submit" name="fave" value="true">Unfavorite</button>
-									</c:if>
-									<c:if test="${!fave}">
-										<button type="submit" name="fave" value="false" class="btn btn-primary">Favorite</button>
-									</c:if>
-								</form>
+
+						</form>
+						<div>
+
+							<form method="post" action="/event-details/${fave}/${event.id}">
+								<c:if test="${fave}">
+									<button type="submit" name="fave" value="true"><i class="fas fa-heart-broken">Unfavorite</i></button>
+								</c:if>
+								<c:if test="${!fave}">
+									<button type="submit" name="fave" value="false"><i class="fas fa-heart">Favorite</i></button>
+								</c:if>
+							</form>
 
 							</div>
 							<div>

@@ -28,13 +28,13 @@
 <body>
 	<%@ include file="partials/navbar.jsp"%>
 
-	<nav class="navbar navbar-expand-lg">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
 		<form method="post" action="/search" class="form-inline ml-auto">
 			<input type="hidden" name="zipCode" value="${zipCode}"> <input
 				class="form-control mr-sm-2" name="keyword" type="search"
 				placeholder="Keyword">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+			<button class="btn btn-light my-2 my-sm-0" type="submit">Search
 				by Keyword</button>
 		</form>
 		<!-- searches by keyword -->
@@ -51,7 +51,7 @@
 			</p>
 			<input type="hidden" name="zipCode" value="${zipCode}">
 			<!-- searches by date -->
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+			<button class="btn btn-light my-2 my-sm-0" type="submit">Search
 				By Date</button>
 
 		</form>
@@ -59,16 +59,19 @@
 		<form method="post" class="form-inline ml-auto" action="/search">
 			<input class="form-control mr-sm-2" name="venuename" type="search"
 				placeholder="Venue">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Choose
+			<button class="btn btn-light my-2 my-sm-0" type="submit">Choose
 				Venue</button>
 		</form>
+		<div></div>
+
 	</nav>
+	<h4 class="error">${message}</h4>
 
 	<!-- creates list of events -->
 	<table class="table table-striped">
 
 
-		<h4 class="error">${message}</h4>
+
 
 
 		<tr>
@@ -107,24 +110,36 @@
 		</c:forEach>
 
 	</table>
-<form method="post" action="/search">
-	<div>
-		<ul class="pagination pagination-lg">
-			<li class="page-item"><button class="page-link" name="pageNum" value="${pageNum-1}">&laquo;</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="1">1</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="2">2</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="3">3</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="4">4</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="5">5</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="6">6</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="7">7</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="8">8</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="9">9</button></li>
-			<li class="page-item"><button class="page-link" name="pageNum" value="10">10</button></li>			
-			<li class="page-item"><button class="page-link" name="pageNum" value="${pageNum +1}">&raquo;</button></li>
-		</ul>
-	</div>
-</form>
+	<form method="post" action="/search">
+		<div>
+			<ul class="pagination pagination-lg">
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="${pageNum-1}">&laquo;</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="1">1</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="2">2</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="3">3</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="4">4</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="5">5</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="6">6</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="7">7</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="8">8</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="9">9</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="10">10</button></li>
+				<li class="page-item"><button class="page-link" name="pageNum"
+						value="${pageNum +1}">&raquo;</button></li>
+			</ul>
+		</div>
+	</form>
 
 </body>
 </html>
