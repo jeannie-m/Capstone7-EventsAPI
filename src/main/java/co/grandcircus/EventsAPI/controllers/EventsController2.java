@@ -19,7 +19,7 @@ import co.grandcircus.EventsAPI.Model.DarkSky.Currently;
 
 @Controller
 public class EventsController2 {
-	
+
 	@Autowired
 	private HttpSession sesh;
 
@@ -59,52 +59,56 @@ public class EventsController2 {
 		String localDate = event.getDates().getStart().getLocalDate();
 		String localTime = event.getDates().getStart().getLocalTime();
 		Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);
-		//transform the icon string to the format needed for icon canvas function
-		String icon = weather.getIcon().toUpperCase().replace('-', '_');
+		// transform the icon string to the format needed for icon canvas function
+		System.out.println(weather);
+
+		if (weather.getIcon() != null) {
+			String icon = weather.getIcon().toUpperCase().replace('-', '_');
+			mav.addObject("icon", icon);
+			System.out.println(icon);
+		}
 		mav.addObject("weather", weather);
-		mav.addObject("icon", icon);
-		System.out.println(icon);
-		
+
 		return mav;
-		
+
 	}
 
 	@PostMapping("/event-details/{fave}/{id}")
 	public ModelAndView favorite(@PathVariable("fave") Boolean fave, @PathVariable("id") String id) {
-		
-		ModelAndView mav = new ModelAndView("redirect:/event-details/"+id);
+
+		ModelAndView mav = new ModelAndView("redirect:/event-details/" + id);
 		Event event = apiServ2.getEventById(id);
 
-		if (fave == false) { //favorites an event and adds it to SQL database if not already favorited
-		
-		FavEvent fEvent = new FavEvent();
-		//On the bucket list, the events are showing up with the images(?) but none of the rest of the details
-				//It doesn't appear to be running the following code:
-				fEvent.setEventId(event.getId());
-				fEvent.setName(event.getName());
-				
-				String lat = event.get_embedded().getVenues().get(0).getLocation().getLatitude();
-				String lon = event.get_embedded().getVenues().get(0).getLocation().getLongitude();
-				String localDate = event.getDates().getStart().getLocalDate();
-				String localTime = event.getDates().getStart().getLocalTime();
-				Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);				
-				
-				
-				fEvent.setWeather(weather);
-				
-				fEvent.setAttractions(event.get_embedded().getAttractions());
-				fEvent.setImage(event.getImages().get(0).getUrl());
-				fEvent.setDate(event.getDates().getStart().getLocalDate());
-				fEvent.setLink(event.getUrl());
-				fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());;
-				fEvent.setGenre(event.getClassifications().get(0).getGenre().getName());
-				fEvent.setAttractions(event.get_embedded().getAttractions());
-				
-				mav.addObject("event", fEvent);
-	
+		if (fave == false) { // favorites an event and adds it to SQL database if not already favorited
 
-		eventsDao.save(fEvent);
-		} else if (fave == true) { //deletes an event from the database if already favorited
+			FavEvent fEvent = new FavEvent();
+			// On the bucket list, the events are showing up with the images(?) but none of
+			// the rest of the details
+			// It doesn't appear to be running the following code:
+			fEvent.setEventId(event.getId());
+			fEvent.setName(event.getName());
+
+			String lat = event.get_embedded().getVenues().get(0).getLocation().getLatitude();
+			String lon = event.get_embedded().getVenues().get(0).getLocation().getLongitude();
+			String localDate = event.getDates().getStart().getLocalDate();
+			String localTime = event.getDates().getStart().getLocalTime();
+			Currently weather = apiServ2.getWeather(lat, lon, localDate, localTime);
+
+			fEvent.setWeather(weather);
+
+			fEvent.setAttractions(event.get_embedded().getAttractions());
+			fEvent.setImage(event.getImages().get(0).getUrl());
+			fEvent.setDate(event.getDates().getStart().getLocalDate());
+			fEvent.setLink(event.getUrl());
+			fEvent.setSegment(event.getClassifications().get(0).getSegment().getName());
+			;
+			fEvent.setGenre(event.getClassifications().get(0).getGenre().getName());
+			fEvent.setAttractions(event.get_embedded().getAttractions());
+
+			mav.addObject("event", fEvent);
+
+			eventsDao.save(fEvent);
+		} else if (fave == true) { // deletes an event from the database if already favorited
 			eventsDao.deleteById((eventsDao.findByEventId(id).getId()));
 		}
 

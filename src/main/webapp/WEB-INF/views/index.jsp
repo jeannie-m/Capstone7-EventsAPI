@@ -28,7 +28,7 @@
 <body>
 	<%@ include file="partials/navbar.jsp"%>
 
-<<<<<<< HEAD
+
 <h1>Welcome to Eventation</h1>
 
 <h4>${message}</h4> 
@@ -36,15 +36,7 @@
 
 <h3>Search events:</h3>
 <form class="container" action="/search">
-=======
-	<h1>Welcome to the Events App</h1>
 
-	<h2>${message}</h2>
-	<!--  sends a message when zip code failed to return events -->
-
-
-	<form class="container" action="/search">
->>>>>>> 34f53cbd0c45a8b603ed5e26b6e0634220c01a65
 
 		<p>
 			Area Code: <input type="text" name="zipCode" required

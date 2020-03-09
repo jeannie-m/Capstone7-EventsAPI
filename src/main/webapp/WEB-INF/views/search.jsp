@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<%@ include file="partials/navbar.jsp"%>
+	<%@ include file="partials/navbar.jsp"%>
 
 	<nav class="navbar navbar-expand-lg">
 
@@ -68,7 +68,7 @@
 	<table class="table table-striped">
 
 
-			<h3>${message}</h3>
+		<h4 class="error">${message}</h4>
 
 
 		<tr>
@@ -88,7 +88,7 @@
 					<td><button class="btn btn-secondary"
 							value="${event.classifications[0].genre.id}" name="genre">${event.classifications[0].genre.name}</button></td>
 				</form>
-				
+
 				<td>${event.dates.start.localDate}</td>
 
 
@@ -107,7 +107,24 @@
 		</c:forEach>
 
 	</table>
-
+<form method="post" action="/search">
+	<div>
+		<ul class="pagination pagination-lg">
+			<li class="page-item"><button class="page-link" name="pageNum" value="${pageNum-1}">&laquo;</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="1">1</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="2">2</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="3">3</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="4">4</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="5">5</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="6">6</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="7">7</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="8">8</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="9">9</button></li>
+			<li class="page-item"><button class="page-link" name="pageNum" value="10">10</button></li>			
+			<li class="page-item"><button class="page-link" name="pageNum" value="${pageNum +1}">&raquo;</button></li>
+		</ul>
+	</div>
+</form>
 
 </body>
 </html>

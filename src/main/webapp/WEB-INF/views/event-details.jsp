@@ -30,7 +30,7 @@
 <script type="text/javascript" src="/javascript.js"></script>
 <title>Event Details</title>
 </head>
-<body>
+<body class="cards">
 	<%@ include file="partials/navbar.jsp"%>
 
 	<div class="container">
@@ -62,22 +62,28 @@
 						<p class="card-text">Genre: ${ genre.name }</p>
 
 						<p class="card-text">Featuring: ${ attractions[0].name }</p>
-						<div class="box">
-							<%--  I guess I can't easily check if the image path exists? I'd like to display a default image is the image path doesn't match an existing image
+						<!-- 						<div class="box"> -->
+						<%--  I guess I can't easily check if the image path exists? I'd like to display a default image is the image path doesn't match an existing image
 							<c:choose>
 							<c:when "${ icon } ne null"> --%>
-							<img src="/img/${ icon }.png" width="128" height="128">
-							<%-- </c:when>
+						<%-- 							<img src="/img/${ icon }.png" width="128" height="128"> --%>
+						<%-- </c:when>
 							<c:otherwise>
 							<img src="/img/.png" width="128" height="128">
 							</c:otherwise> --%>
-						</div>
+						<!-- 						</div> -->
+						<figure>
+							<div class="box">
+								<canvas id="icon2" width="128" height="128"></canvas>
+							</div>
+						</figure>
+
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
 						<div>
-							<a href="${ link }" class="btn btn-primary" target = "blank"> View on
-								TicketMaster</a> 
+							<a href="${ link }" class="btn btn-primary" target="blank">
+								View on TicketMaster</a>
 						</div>
 
 						<form method="post" action="/search">
@@ -117,7 +123,7 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 
 	<figure>
 		<div class="box">
-			<canvas id="icon" width="128" height="128"></canvas>
+			<canvas id="icon2" width="128" height="128"></canvas>
 		</div>
 		<%-- 	 		<div class="box">
 			<canvas id="icon0" width="128" height="128"></canvas>
@@ -159,7 +165,7 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		skycons.add("icon0", Skycons.icon);
 		skycons.add("icon", Skycons.iconString);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
-		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon2", Skycons.${icon});
 		/*		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
 		skycons.add("icon1", Skycons.PARTLY_CLOUDY_DAY);
