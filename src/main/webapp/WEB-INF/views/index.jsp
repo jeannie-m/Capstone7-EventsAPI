@@ -18,17 +18,18 @@
 	href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF"
-	crossorigin="anonymous"><link rel="stylesheet" href="/style.css">
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 <body>
 <%@ include file="partials/navbar.jsp"%>
 
-<h1>Welcome to the Events App</h1>
+<h1>Welcome to Eventation</h1>
 
-<h2>${message}</h2> 
+<h4>${message}</h4> 
 <!--  sends a message when zip code failed to return events -->
 
-
+<h3>Search events:</h3>
 <form class="container" action="/search">
 
 <p>Area Code: <input type="text" name="zipCode" required pattern="[.\d]{5}"></p>

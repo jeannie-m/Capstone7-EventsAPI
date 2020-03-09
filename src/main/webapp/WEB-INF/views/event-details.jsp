@@ -26,7 +26,7 @@
 	integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF"
 	crossorigin="anonymous">
 <!-- Your custom styles -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 <script type="text/javascript" src="/javascript.js"></script>
 <title>Event Details</title>
 </head>
@@ -63,14 +63,21 @@
 
 						<p class="card-text">Featuring: ${ attractions[0].name }</p>
 						<div class="box">
+							<%--  I guess I can't easily check if the image path exists? I'd like to display a default image is the image path doesn't match an existing image
+							<c:choose>
+							<c:when "${ icon } ne null"> --%>
 							<img src="/img/${ icon }.png" width="128" height="128">
+							<%-- </c:when>
+							<c:otherwise>
+							<img src="/img/.png" width="128" height="128">
+							</c:otherwise> --%>
 						</div>
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
 						<div>
-							<a href="${ link }" class="btn btn-primary"> View on
-								TicketMaster</a>
+							<a href="${ link }" class="btn btn-primary" target = "blank"> View on
+								TicketMaster</a> 
 						</div>
 
 						<form method="post" action="/search">

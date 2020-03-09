@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +50,8 @@ public class EventsController {
 	@RequestMapping("/search")
 	public ModelAndView search(@RequestParam("zipCode") String zipCode,
 			@RequestParam(name = "message", required = false) String message) {
+		//I can't get this to work yet: https://www.baeldung.com/spring-data-jpa-pagination-sorting
+		//Pageable firstPageWithTwentyElements = PageRequest.of(0, 20);
 
 		Embedded1 embedded = new Embedded1();
 		embedded = apiServ.getEvent(zipCode); // gets events using the zipcode
