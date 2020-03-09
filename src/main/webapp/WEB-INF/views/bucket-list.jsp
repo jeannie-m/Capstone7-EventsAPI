@@ -26,7 +26,7 @@
 
 <title>Bucket List</title>
 </head>
-<body>
+<body class="cards">
 <%@ include file="partials/navbar.jsp"%>
 
 <div class="container">

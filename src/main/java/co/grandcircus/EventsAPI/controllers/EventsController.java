@@ -84,7 +84,8 @@ public class EventsController {
 			@RequestParam(name = "date", required = false) String startDate,
 			@RequestParam(name = "endDate", required = false) String endDate,
 			@RequestParam(name = "venuename", required = false) String venueName,
-			@RequestParam(name = "genre", required = false) String genre) {
+			@RequestParam(name = "genre", required = false) String genre, 
+			@RequestParam(name = "pageNum", required = false) String pageNum) {
 // pulls in a lot of potential variables
 
 		Embedded1 embedded = new Embedded1();
@@ -209,6 +210,37 @@ public class EventsController {
 			List<Event> events = embedded.getEvents();
 			return new ModelAndView("search", "events", events);
 
+		} else if (pageNum != null && !pageNum.isEmpty()) { // used if there is a pagenumber
+
+			if (Integer.parseInt(pageNum) < 1) {
+				
+				ModelAndView mav = new ModelAndView("redirect:/search");
+				mav.addObject("message",
+						"There were no more events.");
+				mav.addObject("zipCode", zipCode);
+				
+				return mav;
+				
+			}
+			
+			embedded = apiServ.getEvent(zipCode, pageNum);
+			
+			if (embedded == null) { // if the entered variable returns no events, this redirects back to the search page
+				ModelAndView mav = new ModelAndView("redirect:/search");
+				mav.addObject("message",
+						"There were no more events.");
+				mav.addObject("zipCode", zipCode);
+				
+				return mav;
+			}
+			
+			List<Event> events = embedded.getEvents();
+			
+			ModelAndView mav = new ModelAndView("search");
+			mav.addObject("events", events);
+			mav.addObject("pageNum", pageNum);
+
+			return mav;
 		} else {
 
 			return new ModelAndView("redirect:/search", "zipCode", zipCode);

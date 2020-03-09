@@ -30,7 +30,7 @@
 <script type="text/javascript" src="/javascript.js"></script>
 <title>Event Details</title>
 </head>
-<body>
+<body class="cards">
 	<%@ include file="partials/navbar.jsp"%>
 
 	<div class="container">
@@ -46,9 +46,6 @@
 					<img class="card-img-top" src="${ image.url }"
 						alt="${ event.name } image">
 
-
-
-
 					<!-- Card content -->
 					<div class="card-body">
 
@@ -62,22 +59,19 @@
 						<p class="card-text">Genre: ${ genre.name }</p>
 
 						<p class="card-text">Featuring: ${ attractions[0].name }</p>
-						<div class="box">
-							<%--  I guess I can't easily check if the image path exists? I'd like to display a default image is the image path doesn't match an existing image
-							<c:choose>
-							<c:when "${ icon } ne null"> --%>
-							<img src="/img/${ icon }.png" width="128" height="128">
-							<%-- </c:when>
-							<c:otherwise>
-							<img src="/img/.png" width="128" height="128">
-							</c:otherwise> --%>
-						</div>
+
+						<figure>
+							<div class="box">
+								<canvas id="icon" width="128" height="128"></canvas>
+							</div>
+						</figure>
+
 						<p class="card-text">Weather: ${ weather.summary }</p>
 						<p class="card-text">Temperature: ${ weather.temperature }</p>
 						<!-- Button -->
 						<div>
-							<a href="${ link }" class="btn btn-primary" target = "blank"> View on
-								TicketMaster</a> 
+							<a href="${ link }" class="btn btn-primary" target="blank">
+								View on TicketMaster</a>
 						</div>
 
 						<form method="post" action="/search">
@@ -112,23 +106,7 @@
 
 	<!--here is the documentation for icons:
 	icon optional
-A machine-readable text summary of this data point, suitable for selecting an icon for display. If defined, this property will have one of the following values: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined, as additional values, such as hail, thunderstorm, or tornado, may be defined in the future.)  -->
-
-
-	<figure>
-		<div class="box">
-			<canvas id="icon" width="128" height="128"></canvas>
-		</div>
-		<%-- 	 		<div class="box">
-			<canvas id="icon0" width="128" height="128"></canvas>
-		</div>  --%>
-		<%-- 				<div class="box">
-			<canvas id="icon0" width="128" height="128"></canvas>
-		</div>
-						<div class="box">
-			<canvas id="icon2" width="128" height="128"></canvas>
-		</div> --%>
-	</figure>
+	A machine-readable text summary of this data point, suitable for selecting an icon for display. If defined, this property will have one of the following values: clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined, as additional values, such as hail, thunderstorm, or tornado, may be defined in the future.)  -->
 
 	<script>
 		var icon = "${ icon }";
@@ -156,10 +134,8 @@ A machine-readable text summary of this data point, suitable for selecting an ic
 		});
 
 		// you can add a canvas by it's ID...
-		skycons.add("icon0", Skycons.icon);
-		skycons.add("icon", Skycons.iconString);
-		skycons.add("icon1", Skycons.PARTLY_CLOUDY_NIGHT);
-		skycons.add("icon2", Skycons.PARTLY_CLOUDY_DAY);
+		skycons.add("icon", Skycons.${icon});
+
 
 		// if you're using the Forecast API, you can also supply
 		// strings: "partly-cloudy-day" or "rain".
