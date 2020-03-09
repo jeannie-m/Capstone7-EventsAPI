@@ -58,14 +58,19 @@
 						<p class="card-text">Genre: ${ event.genre }</p>
 						<p class="card-text">Weather: ${ event.weather.summary }</p>
 						<p class="card-text">Temperature: ${ event.weather.temperature } f</p>
-						
+						<p class="card-text">Featuring: ${ event.attractions[0].name }</p> 
+
 						<div>
 							<a href="${ event.link }" class="btn btn-primary"> View on
 								TicketMaster</a>
 						</div>
-						<div>
-							<a href="/search" class="btn btn-primary"> Back to Search</a>
-						</div>
+						<form method="post" action="/search">
+
+							<div>
+								<button class="btn btn-primary">Back to Search</button>
+							</div>
+
+						</form>
 					</div>
 				</div>
 				<!-- Card -->
