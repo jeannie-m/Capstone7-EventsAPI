@@ -27,7 +27,8 @@
 </head>
 <body>
 	<%@ include file="partials/navbar.jsp"%>
-	<container class="container-fluid bg-relief">
+	
+	<container class="container-fluid">
 	<div class="row">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
