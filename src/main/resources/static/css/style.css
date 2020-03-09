@@ -7,7 +7,7 @@ body {
 }
 
 .error {
-	color: dark-red;
+	color: red;
 }
 
 .bg-relief{
@@ -20,5 +20,10 @@ body {
 
 table, tr, td, container, .col-md-12, .search-card {
 	background-color:rgba(255, 255, 255, 0.4);
+}
+
+.split{
+	display: flex;
+	justify-content: space-between;
 }
 
